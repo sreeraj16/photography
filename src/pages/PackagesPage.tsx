@@ -118,21 +118,26 @@ export function PackagesPage() {
 
       {/* Side-by-Side Comparison Matrix */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <span className="text-[10px] font-mono uppercase tracking-widest text-dotpic-gold font-semibold block mb-1">
             DETAILED SPECIFICATIONS
           </span>
-          <h3 className="text-2xl sm:text-3xl font-serif text-white">
+          <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">
             Feature Comparison Matrix
           </h3>
+          <p className="text-[11px] text-dotpic-muted font-mono block sm:hidden">
+            ← Swipe horizontally to compare all packages →
+          </p>
         </div>
 
         <div className="bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden shadow-2xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+          <div className="overflow-x-auto touch-scroll">
+            <table className="w-full text-left text-xs min-w-[620px]">
               <thead className="bg-dotpic-surface text-dotpic-gold font-mono uppercase tracking-wider border-b border-dotpic-border">
                 <tr>
-                  <th className="py-4 px-6 text-white font-serif">Feature / Deliverable</th>
+                  <th className="py-4 px-6 text-white font-serif sticky left-0 bg-dotpic-surface z-10 shadow-[2px_0_8px_rgba(0,0,0,0.5)]">
+                    Feature / Deliverable
+                  </th>
                   <th className="py-4 px-4 text-center">Classic Storyteller</th>
                   <th className="py-4 px-4 text-center text-dotpic-gold">Cinematic Grandeur</th>
                   <th className="py-4 px-4 text-center">Heritage Royal</th>
@@ -142,7 +147,7 @@ export function PackagesPage() {
               <tbody className="divide-y divide-dotpic-border text-dotpic-muted">
                 {matrixFeatures.map((row, idx) => (
                   <tr key={idx} className="hover:bg-dotpic-surface/50 transition-colors">
-                    <td className="py-3.5 px-6 font-medium text-white">
+                    <td className="py-3.5 px-6 font-medium text-white sticky left-0 bg-dotpic-charcoal z-10 shadow-[2px_0_8px_rgba(0,0,0,0.5)]">
                       {row.name}
                     </td>
                     <td className="py-3.5 px-4 text-center">{row.classic}</td>

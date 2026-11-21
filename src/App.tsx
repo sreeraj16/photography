@@ -7,6 +7,7 @@ import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { FollowRail } from './components/common/FollowRail';
 import { CustomCursor } from './components/common/CustomCursor';
+import { ScrollProgress } from './components/common/ScrollProgress';
 import { AnnouncementBar } from './components/common/AnnouncementBar';
 import { MobileStickyBar } from './components/common/MobileStickyBar';
 
@@ -64,6 +65,7 @@ function AppShell() {
   return (
     <>
       <ScrollToTop />
+      <ScrollProgress />
       <CustomCursor />
 
       {/* Announcement Bar */}
@@ -78,7 +80,7 @@ function AppShell() {
       {!isAdminRoute && !isLinksRoute && <FollowRail />}
 
       {/* Main Routes */}
-      <div className="flex-1">
+      <div className="flex-1 pb-16 lg:pb-0 min-h-screen">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

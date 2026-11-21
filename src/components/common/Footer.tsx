@@ -207,8 +207,8 @@ export function Footer() {
       </div>
 
       {/* 3. Bottom Legal & Copyright Bar */}
-      <div className="border-t border-dotpic-border/60 py-6 text-xs text-dotpic-muted/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="border-t border-dotpic-border/60 py-6 pb-24 lg:pb-6 text-xs text-dotpic-muted/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} DOTPIC PHOTOGRAPHY. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="hover:text-dotpic-white transition-colors">

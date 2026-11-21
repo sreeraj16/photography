@@ -46,9 +46,9 @@ export function ShareModal({ title, url, isOpen, onClose }: ShareModalProps) {
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto"
     >
-      <div className="bg-dotpic-charcoal border border-dotpic-border rounded-sm max-w-md w-full p-6 relative">
+      <div className="bg-dotpic-charcoal border border-dotpic-border rounded-sm max-w-md w-full max-h-[92vh] overflow-y-auto p-6 relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1 text-dotpic-muted hover:text-white"

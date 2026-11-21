@@ -51,7 +51,8 @@ export function HorizontalScroll() {
       {/* Horizontal Scrolling Flex Track */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 pb-4 pt-2 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+        data-cursor="drag"
+        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 pb-4 pt-2 snap-x snap-mandatory cursor-grab active:cursor-grabbing touch-scroll"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {photos.map((p, idx) => (

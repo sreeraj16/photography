@@ -36,6 +36,9 @@ export default {
         'shutter': 'shutter 0.3s ease-out',
         'float': 'float 6s ease-in-out infinite',
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
+        'shimmer': 'shimmer 2.5s infinite linear',
+        'glow': 'glow 3s ease-in-out infinite alternate',
+        'spin-slow': 'spin 20s linear infinite',
       },
       keyframes: {
         shutter: {
@@ -50,6 +53,14 @@ export default {
         pulseSubtle: {
           '0%, 100%': { opacity: '0.8' },
           '50%': { opacity: '1' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 15px rgba(201, 169, 110, 0.15)' },
+          '100%': { boxShadow: '0 0 30px rgba(201, 169, 110, 0.45)' },
         }
       }
     },

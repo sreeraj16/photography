@@ -19,8 +19,8 @@ export function VisualStorytelling() {
           </h2>
         </div>
 
-        {/* 2.39:1 Anamorphic Cinema Crop Container */}
-        <div className="relative aspect-cinema w-full rounded-sm overflow-hidden border border-dotpic-border group shadow-2xl">
+        {/* Responsive Cinema Crop Container: 16:10 on small mobile, 2.39:1 anamorphic on desktop */}
+        <div className="relative aspect-[16/10] sm:aspect-cinema w-full rounded-sm overflow-hidden border border-dotpic-border group shadow-2xl">
           <img
             src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop"
             alt="Cinematic 2.39:1 Letterbox Frame"

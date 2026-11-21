@@ -78,7 +78,8 @@ export function PortfolioPreview() {
               <div
                 key={photo.id || idx}
                 onClick={() => handleOpenLightbox(idx)}
-                className={`group relative overflow-hidden rounded-sm cursor-pointer border border-dotpic-border bg-dotpic-surface transition-all duration-500 hover:border-dotpic-gold/50 ${
+                data-cursor="view"
+                className={`group relative overflow-hidden rounded-sm cursor-pointer border border-dotpic-border bg-dotpic-surface transition-all duration-500 hover:border-dotpic-gold/70 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)] ${
                   isWide ? 'sm:col-span-2 aspect-[16/9]' : 'aspect-[4/5]'
                 }`}
               >

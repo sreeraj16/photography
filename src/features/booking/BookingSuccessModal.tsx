@@ -35,9 +35,9 @@ export function BookingSuccessModal({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-xl animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-xl animate-in fade-in duration-300 overflow-y-auto"
     >
-      <div className="bg-dotpic-charcoal border border-dotpic-gold/50 rounded-sm max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+      <div className="bg-dotpic-charcoal border border-dotpic-gold/50 rounded-sm max-w-lg w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl">
         {/* Success Header */}
         <div className="text-center mb-6">
           <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-4">

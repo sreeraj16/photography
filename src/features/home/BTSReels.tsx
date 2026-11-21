@@ -92,6 +92,7 @@ export function BTSReels() {
             href={reel.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
+            data-cursor="play"
             className="group flex-shrink-0 w-64 sm:w-72 aspect-reel rounded-sm overflow-hidden border border-dotpic-border bg-dotpic-surface relative transition-all duration-300 hover:border-pink-500/50 hover:shadow-2xl"
           >
             <img
