@@ -8,6 +8,7 @@ import { QRCodeModal } from '../features/campus/QRCodeModal';
 import { Lightbox } from '../components/common/Lightbox';
 import { ShareModal } from '../components/common/ShareModal';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function CampusEventDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -126,21 +127,24 @@ export function CampusEventDetailPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {photos.map((p, idx) => (
-            <div
+            <TiltCard
               key={p.id || idx}
               onClick={() => handleOpenPhoto(idx)}
-              className="group relative aspect-square rounded-sm overflow-hidden border border-dotpic-border bg-dotpic-surface cursor-pointer hover:border-dotpic-gold/50 transition-all"
+              data-cursor="view"
+              maxTilt={7}
+              scale={1.03}
+              className="group relative aspect-square rounded-xl overflow-hidden border border-dotpic-border/80 bg-dotpic-surface cursor-pointer hover:border-dotpic-gold/60 transition-all shadow-md"
             >
               <img
                 src={p.url}
                 alt={p.title || "Student Portrait"}
-                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
 
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-between">
                 <div className="flex justify-end">
-                  <span className="p-1.5 rounded-full bg-black/80 text-dotpic-gold border border-white/20">
+                  <span className="p-2 rounded-full bg-black/80 text-dotpic-gold border border-white/20">
                     <Eye className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -148,7 +152,7 @@ export function CampusEventDetailPage() {
                   {p.title || `Moment 00${idx + 1}`}
                 </span>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

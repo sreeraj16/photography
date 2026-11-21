@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { Play, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Sparkles, ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
+import { TiltCard } from '../../components/ui/TiltCard';
 
 export function BTSReels() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -45,34 +46,34 @@ export function BTSReels() {
   };
 
   return (
-    <section className="py-24 bg-dotpic-black relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="flex items-center justify-between">
+    <section className="py-28 bg-dotpic-black relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <div className="flex items-end justify-between">
           <div>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-3 mb-3">
               <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-light">09</span>
               <div className="h-[1px] w-12 bg-dotpic-gold/50" />
-              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-pink-500/10 border border-pink-500/30 text-pink-300 text-[10px] font-mono tracking-widest uppercase">
-                <Sparkles className="w-3 h-3" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-[10px] font-mono tracking-widest uppercase">
+                <Sparkles className="w-3.5 h-3.5" />
                 <span>BEHIND THE SCENES</span>
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif text-dotpic-white font-light">
-              Reels & Moments Unfiltered
+            <h2 className="text-3xl sm:text-5xl font-serif text-dotpic-white font-light">
+              Reels & Unfiltered Moments
             </h2>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleScroll('left')}
-              className="p-3 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors"
+              className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors shadow-md"
               aria-label="Previous reels"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => handleScroll('right')}
-              className="p-3 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors"
+              className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors shadow-md"
               aria-label="Next reels"
             >
               <ChevronRight className="w-5 h-5" />
@@ -81,52 +82,62 @@ export function BTSReels() {
         </div>
       </div>
 
-      {/* Vertical 9:16 Reel Cards Strip */}
+      {/* Vertical 9:16 Reel Cards Strip with 3D Tilt */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 pb-4 pt-2 cursor-grab active:cursor-grabbing"
+        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 py-4 cursor-grab active:cursor-grabbing touch-scroll"
       >
         {reels.map((reel) => (
-          <a
+          <TiltCard
             key={reel.id}
-            href={reel.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            maxTilt={7}
+            scale={1.03}
             data-cursor="play"
-            className="group flex-shrink-0 w-64 sm:w-72 aspect-reel rounded-sm overflow-hidden border border-dotpic-border bg-dotpic-surface relative transition-all duration-300 hover:border-pink-500/50 hover:shadow-2xl"
+            className="flex-shrink-0 w-64 sm:w-72 aspect-reel rounded-2xl overflow-hidden border border-dotpic-border/80 bg-dotpic-surface shadow-2xl relative transition-all duration-300 hover:border-pink-500/60"
           >
-            <img
-              src={reel.cover}
-              alt={reel.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/40" />
+            <a
+              href={reel.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full relative"
+            >
+              <img
+                src={reel.cover}
+                alt={reel.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100"
+              />
 
-            {/* Play Button & Duration */}
-            <div className="absolute top-4 right-4 flex items-center gap-2">
-              <span className="text-[10px] bg-black/70 border border-white/20 text-white font-mono px-2 py-0.5 rounded">
-                {reel.duration}
-              </span>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-pink-500/20 border border-pink-500/60 flex items-center justify-center group-hover:scale-110 group-hover:bg-pink-500 transition-all duration-300">
-              <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-            </div>
+              {/* Instagram & Duration Badge */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span className="p-2 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-pink-400">
+                  <Instagram className="w-4 h-4" />
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white/90">
+                  {reel.duration}
+                </span>
+              </div>
 
-            {/* Reel Caption */}
-            <div className="absolute bottom-5 left-5 right-5">
-              <span className="text-[10px] font-mono uppercase text-pink-400 tracking-wider block mb-1">
-                @_dotpic_ REELS
-              </span>
-              <h4 className="text-sm font-serif text-white font-medium mb-1">
-                {reel.title}
-              </h4>
-              <p className="text-[11px] text-dotpic-muted line-clamp-2">
-                {reel.desc}
-              </p>
-            </div>
-          </a>
+              {/* Center Play Icon with pulse */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-pink-600/90 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <Play className="w-6 h-6 fill-white ml-0.5" />
+              </div>
+
+              {/* Title & Description */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <h4 className="text-lg font-serif text-white font-medium mb-1 drop-shadow-md">
+                  {reel.title}
+                </h4>
+                <p className="text-xs text-dotpic-muted font-light line-clamp-2 leading-relaxed">
+                  {reel.desc}
+                </p>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-pink-400 block mt-2 font-bold">
+                  Watch on Instagram →
+                </span>
+              </div>
+            </a>
+          </TiltCard>
         ))}
       </div>
     </section>

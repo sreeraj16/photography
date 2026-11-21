@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { dataStore } from '../lib/dataStore';
 import { BRAND } from '../lib/constants';
+import { DotpicLogo } from '../components/common/DotpicLogo';
 
 export function LinksBioPage() {
   const items = dataStore.getLinksItems().filter(i => i.is_active);
@@ -38,7 +39,7 @@ export function LinksBioPage() {
       <div className="w-full max-w-md mx-auto text-center relative z-10 flex flex-col items-center">
         {/* Brand Logo & Avatar */}
         <Link to="/" className="mb-4 inline-block group">
-          <img src="/logo.svg" alt="DOTPIC" className="h-12 w-auto mx-auto group-hover:scale-105 transition-transform" />
+          <DotpicLogo size="lg" />
         </Link>
 
         {/* Tagline */}

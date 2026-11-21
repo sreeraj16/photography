@@ -21,6 +21,7 @@ import {
   History
 } from 'lucide-react';
 import { BRAND } from '../../lib/constants';
+import { DotpicLogo } from '../../components/common/DotpicLogo';
 
 interface AdminLayoutProps {
   activeTab: string;
@@ -74,7 +75,7 @@ export function AdminLayout({ activeTab, onTabChange, children }: AdminLayoutPro
           {/* Logo & Portal Badge */}
           <div className="p-6 border-b border-dotpic-border flex items-center justify-between">
             <Link to="/" target="_blank" className="flex items-center gap-2 group">
-              <img src="/logo.svg" alt="DOTPIC" className="h-8 w-auto" />
+              <DotpicLogo size="sm" />
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}

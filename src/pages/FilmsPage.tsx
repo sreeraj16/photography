@@ -3,6 +3,7 @@ import { Youtube, Play, ArrowUpRight } from 'lucide-react';
 import { dataStore } from '../lib/dataStore';
 import { BRAND } from '../lib/constants';
 import { YouTubeModal } from '../components/common/YouTubeModal';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function FilmsPage() {
   const videos = dataStore.getVideos();
@@ -77,10 +78,13 @@ export function FilmsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((vid) => (
-            <div
+            <TiltCard
               key={vid.id}
+              maxTilt={6}
+              scale={1.03}
+              data-cursor="play"
               onClick={() => setActiveVideo({ id: vid.youtube_id, title: vid.title })}
-              className="group bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden cursor-pointer hover:border-red-500/50 transition-all duration-300 shadow-xl"
+              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 cursor-pointer hover:border-red-500/60 transition-all duration-300 shadow-2xl group"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img
@@ -95,20 +99,20 @@ export function FilmsPage() {
                   <Play className="w-6 h-6 fill-white ml-0.5" />
                 </div>
 
-                <span className="absolute bottom-3 left-3 bg-black/80 text-white px-2.5 py-0.5 rounded text-[10px] font-mono border border-white/20 uppercase">
+                <span className="absolute bottom-3 left-3 bg-black/80 text-white px-3 py-1 rounded-full text-[10px] font-mono border border-white/20 uppercase backdrop-blur-md">
                   {vid.category}
                 </span>
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-serif text-white group-hover:text-dotpic-gold transition-colors mb-2">
+                <h3 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-2">
                   {vid.title}
                 </h3>
-                <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed">
+                <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed font-light">
                   {vid.description}
                 </p>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

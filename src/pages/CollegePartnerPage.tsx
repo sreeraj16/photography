@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, GraduationCap, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function CollegePartnerPage() {
   const colleges = [
@@ -42,17 +43,19 @@ export function CollegePartnerPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {colleges.map((col, idx) => (
-            <div
+            <TiltCard
               key={idx}
-              className="bg-dotpic-charcoal border border-dotpic-border rounded-sm p-6 flex flex-col justify-between hover:border-dotpic-gold/50 transition-colors shadow-xl"
+              maxTilt={6}
+              scale={1.03}
+              className="bg-dotpic-charcoal border border-dotpic-border/80 rounded-2xl p-6 flex flex-col justify-between hover:border-dotpic-gold/60 transition-colors shadow-2xl group"
             >
               <div>
-                <div className="w-10 h-10 rounded-full bg-dotpic-surface border border-dotpic-gold/30 text-dotpic-gold flex items-center justify-center mb-4">
-                  <GraduationCap className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-full bg-dotpic-surface border border-dotpic-gold/40 text-dotpic-gold flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform">
+                  <GraduationCap className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-serif text-white mb-1">{col.name}</h3>
+                <h3 className="text-xl font-serif text-white mb-1 group-hover:text-dotpic-gold transition-colors">{col.name}</h3>
                 <p className="text-xs text-dotpic-gold font-mono mb-3">Fest: {col.fest}</p>
-                <div className="text-[11px] text-dotpic-muted space-y-1">
+                <div className="text-[11px] text-dotpic-muted space-y-1 font-light">
                   <p>Location: {col.city}</p>
                   <p>Campus Attendance: <strong className="text-white">{col.attendees}</strong></p>
                 </div>
@@ -61,13 +64,13 @@ export function CollegePartnerPage() {
               <div className="pt-4 border-t border-dotpic-border/60 mt-6">
                 <Link
                   to={`/book?category=Campus+Stories&college=${encodeURIComponent(col.name)}`}
-                  className="text-xs uppercase tracking-wider text-dotpic-gold hover:underline font-semibold flex items-center gap-1"
+                  className="text-xs uppercase tracking-wider text-dotpic-gold hover:underline font-bold flex items-center gap-1"
                 >
                   <span>Book for {col.name}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

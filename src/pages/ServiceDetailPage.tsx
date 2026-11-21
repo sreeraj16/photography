@@ -3,6 +3,7 @@ import { ArrowLeft, Check, Calendar, ArrowUpRight } from 'lucide-react';
 import { SERVICE_CATEGORIES } from '../lib/constants';
 import { dataStore } from '../lib/dataStore';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -98,25 +99,28 @@ export function ServiceDetailPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedGalleries.map((gal) => (
-              <Link
+              <TiltCard
                 key={gal.id}
-                to={`/portfolio/${gal.slug}`}
-                className="group bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden block"
+                maxTilt={6}
+                scale={1.03}
+                className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 shadow-2xl group hover:border-dotpic-gold/60 transition-colors"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={gal.cover_image_url}
-                    alt={gal.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <h4 className="text-sm font-serif text-white group-hover:text-dotpic-gold transition-colors truncate">
-                    {gal.title}
-                  </h4>
-                  <p className="text-xs text-dotpic-muted mt-1">{gal.location}</p>
-                </div>
-              </Link>
+                <Link to={`/portfolio/${gal.slug}`} className="block">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={gal.cover_image_url}
+                      alt={gal.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h4 className="text-base font-serif text-white group-hover:text-dotpic-gold transition-colors truncate">
+                      {gal.title}
+                    </h4>
+                    <p className="text-xs text-dotpic-muted mt-1 font-light">{gal.location}</p>
+                  </div>
+                </Link>
+              </TiltCard>
             ))}
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, LayoutGrid, Eye, ArrowUpRight } from 'lucide-react';
+import { Grid, LayoutGrid, Eye, ArrowUpRight, Camera } from 'lucide-react';
 import { dataStore } from '../lib/dataStore';
 import { Lightbox } from '../components/common/Lightbox';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -31,7 +32,7 @@ export function PortfolioPage() {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-28 pb-24 bg-dotpic-black text-dotpic-white min-h-screen">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <span className="text-[10px] uppercase font-mono tracking-[0.3em] text-dotpic-gold font-semibold block mb-2">
@@ -40,7 +41,7 @@ export function PortfolioPage() {
         <h1 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
           Signature Frames & Albums
         </h1>
-        <p className="text-xs sm:text-sm text-dotpic-muted max-w-xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-dotpic-muted max-w-xl mx-auto leading-relaxed font-light">
           Filter through our royal wedding celebrations, collegiate memories, and editorial portrait archives.
         </p>
       </div>
@@ -52,9 +53,9 @@ export function PortfolioPage() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3.5 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+              className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all ${
                 selectedCategory === 'all'
-                  ? 'bg-dotpic-gold text-dotpic-black font-semibold'
+                  ? 'bg-dotpic-gold text-dotpic-black font-bold shadow-[0_0_15px_rgba(201,169,110,0.4)]'
                   : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
               }`}
             >
@@ -64,9 +65,9 @@ export function PortfolioPage() {
               <button
                 key={c.id}
                 onClick={() => setSelectedCategory(c.slug)}
-                className={`px-3.5 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all ${
                   selectedCategory === c.slug
-                    ? 'bg-dotpic-gold text-dotpic-black font-semibold'
+                    ? 'bg-dotpic-gold text-dotpic-black font-bold shadow-[0_0_15px_rgba(201,169,110,0.4)]'
                     : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
                 }`}
               >
@@ -79,9 +80,9 @@ export function PortfolioPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLayoutMode('masonry')}
-              className={`p-2 rounded border transition-colors ${
+              className={`p-2.5 rounded-full border transition-all ${
                 layoutMode === 'masonry'
-                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold'
+                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold shadow-md'
                   : 'bg-dotpic-surface text-dotpic-muted border-dotpic-border hover:text-white'
               }`}
               title="Masonry Mode"
@@ -90,9 +91,9 @@ export function PortfolioPage() {
             </button>
             <button
               onClick={() => setLayoutMode('grid')}
-              className={`p-2 rounded border transition-colors ${
+              className={`p-2.5 rounded-full border transition-all ${
                 layoutMode === 'grid'
-                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold'
+                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold shadow-md'
                   : 'bg-dotpic-surface text-dotpic-muted border-dotpic-border hover:text-white'
               }`}
               title="Uniform Square Grid Mode"
@@ -103,48 +104,51 @@ export function PortfolioPage() {
         </div>
       </div>
 
-      {/* Featured Albums Showcase */}
+      {/* Featured Albums Showcase with 3D Tilt */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <h3 className="text-xl font-serif text-white mb-6">
+        <h3 className="text-2xl font-serif text-white mb-6">
           Curated Photo Albums ({filteredGalleries.length})
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredGalleries.map((gal) => (
-            <Link
+            <TiltCard
               key={gal.id}
-              to={`/portfolio/${gal.slug}`}
-              className="group bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden block hover:border-dotpic-gold/50 transition-all duration-300 shadow-xl"
+              maxTilt={6}
+              scale={1.02}
+              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 shadow-2xl transition-colors duration-300 hover:border-dotpic-gold/60 group"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={gal.cover_image_url}
-                  alt={gal.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <span className="absolute top-3 left-3 bg-black/80 px-2.5 py-0.5 rounded text-[10px] font-mono text-dotpic-gold border border-dotpic-gold/40 uppercase">
-                  {gal.category_slug}
-                </span>
-              </div>
+              <Link to={`/portfolio/${gal.slug}`} className="block">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={gal.cover_image_url}
+                    alt={gal.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <span className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-[10px] font-mono text-dotpic-gold border border-dotpic-gold/40 uppercase backdrop-blur-md">
+                    {gal.category_slug}
+                  </span>
+                </div>
 
-              <div className="p-6">
-                <h4 className="text-lg font-serif text-white group-hover:text-dotpic-gold transition-colors mb-1 truncate">
-                  {gal.title}
-                </h4>
-                <p className="text-xs text-dotpic-muted mb-4">{gal.location}</p>
-                <span className="text-xs uppercase tracking-wider text-dotpic-gold flex items-center gap-1 font-medium">
-                  View Full Album <ArrowUpRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </Link>
+                <div className="p-6">
+                  <h4 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-1 truncate">
+                    {gal.title}
+                  </h4>
+                  <p className="text-xs text-dotpic-muted mb-4 font-light">{gal.location}</p>
+                  <span className="text-xs uppercase tracking-wider text-dotpic-gold flex items-center gap-1 font-semibold">
+                    View Full Album <ArrowUpRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </Link>
+            </TiltCard>
           ))}
         </div>
       </div>
 
-      {/* Individual Photo Lightbox Feed */}
+      {/* Individual Photo Lightbox Feed with 3D Tilt */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-xl font-serif text-white mb-6">
+        <h3 className="text-2xl font-serif text-white mb-6">
           Standalone Master Frames ({filteredPhotos.length})
         </h3>
 
@@ -154,10 +158,13 @@ export function PortfolioPage() {
             : 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4'
         }>
           {filteredPhotos.map((photo, idx) => (
-            <div
+            <TiltCard
               key={photo.id || idx}
               onClick={() => handleOpenPhoto(idx)}
-              className={`group relative overflow-hidden rounded-sm cursor-pointer border border-dotpic-border bg-dotpic-surface hover:border-dotpic-gold/50 transition-all duration-300 ${
+              data-cursor="view"
+              maxTilt={7}
+              scale={1.02}
+              className={`rounded-xl overflow-hidden cursor-pointer border border-dotpic-border/80 bg-dotpic-surface hover:border-dotpic-gold/60 transition-all duration-300 shadow-xl group ${
                 layoutMode === 'masonry'
                   ? (idx % 4 === 0 ? 'sm:col-span-2 aspect-[16/9]' : 'aspect-[4/5]')
                   : 'aspect-square'
@@ -170,25 +177,31 @@ export function PortfolioPage() {
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-between">
-                <div className="flex justify-end">
-                  <span className="p-2 rounded-full bg-black/80 text-dotpic-gold border border-white/20">
+              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity p-5 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  {photo.exif_camera && (
+                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 text-[10px] font-mono text-dotpic-gold border border-white/10">
+                      <Camera className="w-3 h-3 text-dotpic-gold" />
+                      <span>{photo.exif_camera}</span>
+                    </span>
+                  )}
+                  <span className="p-2 rounded-full bg-black/80 text-dotpic-gold border border-white/20 ml-auto">
                     <Eye className="w-4 h-4" />
                   </span>
                 </div>
 
                 <div>
-                  {photo.exif_camera && (
-                    <span className="text-[10px] font-mono text-dotpic-gold block">
-                      {photo.exif_camera} • {photo.exif_aperture || 'f/1.4'}
-                    </span>
-                  )}
-                  <h5 className="text-sm font-serif text-white font-medium truncate">
+                  <h5 className="text-base font-serif text-white font-medium truncate">
                     {photo.title || "Signature Frame"}
                   </h5>
+                  {photo.caption && (
+                    <p className="text-xs text-dotpic-muted truncate font-light mt-0.5">
+                      {photo.caption}
+                    </p>
+                  )}
                 </div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

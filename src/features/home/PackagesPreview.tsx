@@ -3,17 +3,18 @@ import { Check, Sparkles, ArrowUpRight } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
 import { formatINR } from '../../lib/utils';
 import { Button } from '../../components/ui/Button';
+import { TiltCard } from '../../components/ui/TiltCard';
 
 export function PackagesPreview() {
   const packages = dataStore.getPackages().filter(p => p.is_enabled).slice(0, 3);
 
   return (
-    <section className="py-24 bg-dotpic-black relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-28 bg-dotpic-black relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Numeral 11 */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-3 mb-3">
               <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-light">11</span>
               <div className="h-[1px] w-12 bg-dotpic-gold/50" />
               <span className="text-xs uppercase tracking-[0.3em] text-dotpic-gold font-semibold">
@@ -29,49 +30,53 @@ export function PackagesPreview() {
           </p>
         </div>
 
-        {/* Packages Cards Grid (3 cols) */}
+        {/* Packages Cards Grid with 3D Tilt */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
-            <div
+            <TiltCard
               key={pkg.id}
-              className={`relative bg-dotpic-charcoal border rounded-sm p-8 flex flex-col justify-between transition-all duration-300 ${
+              maxTilt={5}
+              scale={1.02}
+              className={`rounded-2xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative shadow-2xl ${
                 pkg.is_popular
-                  ? 'border-dotpic-gold shadow-[0_0_30px_rgba(201,169,110,0.15)] ring-1 ring-dotpic-gold'
-                  : 'border-dotpic-border hover:border-dotpic-gold/40'
+                  ? 'bg-gradient-to-b from-dotpic-charcoal via-black to-dotpic-charcoal border-2 border-dotpic-gold shadow-[0_0_35px_rgba(201,169,110,0.25)]'
+                  : 'bg-dotpic-charcoal border border-dotpic-border/80 hover:border-dotpic-gold/50'
               }`}
             >
               {pkg.is_popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-dotpic-gold via-dotpic-goldLight to-dotpic-gold text-dotpic-black text-[10px] font-bold tracking-widest uppercase px-4 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-dotpic-gold via-[#E8D1A7] to-dotpic-gold text-dotpic-black text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
                   <Sparkles className="w-3 h-3" />
-                  <span>MOST POPULAR CHOICE</span>
+                  <span>SIGNATURE POPULAR CHOICE</span>
                 </div>
               )}
 
               <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-dotpic-gold block mb-2">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-dotpic-gold block mb-2 font-bold">
                   {pkg.duration}
                 </span>
-                <h3 className="text-2xl font-serif text-white mb-2">
+                <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">
                   {pkg.name}
                 </h3>
-                <p className="text-xs text-dotpic-muted mb-6 leading-relaxed">
+                <p className="text-xs text-dotpic-muted mb-6 leading-relaxed font-light">
                   {pkg.description}
                 </p>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-dotpic-border">
+                <div className="mb-6 pb-6 border-b border-dotpic-border/80">
                   <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-medium">
                     {formatINR(pkg.price_inr)}
                   </span>
-                  <span className="text-xs text-dotpic-muted ml-2">/ session onwards</span>
+                  <span className="text-xs text-dotpic-muted ml-2 font-mono">/ complete assignment</span>
                 </div>
 
                 {/* Inclusions List */}
-                <ul className="space-y-3 mb-8 text-xs text-dotpic-muted">
+                <ul className="space-y-3.5 mb-8 text-xs text-dotpic-muted">
                   {pkg.inclusions.map((inc, i) => (
-                    <li key={i} className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-dotpic-gold flex-shrink-0 mt-0.5" />
-                      <span>{inc}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-4 h-4 rounded-full bg-dotpic-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-dotpic-gold" />
+                      </div>
+                      <span className="font-light">{inc}</span>
                     </li>
                   ))}
                 </ul>
@@ -84,25 +89,25 @@ export function PackagesPreview() {
                 >
                   <Button
                     variant={pkg.is_popular ? 'gold' : 'outline'}
-                    size="md"
+                    size="lg"
                     className="w-full"
                     withShutterSound
                   >
-                    Enquire Package
+                    Select {pkg.name}
                   </Button>
                 </Link>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
 
         {/* View Detailed Comparison CTA */}
-        <div className="mt-14 text-center">
+        <div className="mt-16 text-center">
           <Link
             to="/packages"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-dotpic-gold hover:text-dotpic-goldLight font-semibold border-b border-dotpic-gold/40 pb-1"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-dotpic-gold hover:text-white font-semibold border-b border-dotpic-gold/40 pb-1.5 transition-colors"
           >
-            <span>Compare Full Deliverables Matrix & Custom Add-ons</span>
+            <span>Compare Full Specification Matrix & Equipment</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>

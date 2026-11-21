@@ -6,6 +6,7 @@ import { formatDate } from '../lib/utils';
 import { Lightbox } from '../components/common/Lightbox';
 import { ShareModal } from '../components/common/ShareModal';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function GalleryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -92,10 +93,13 @@ export function GalleryDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((photo, idx) => (
-            <div
+            <TiltCard
               key={photo.id || idx}
               onClick={() => handleOpenPhoto(idx)}
-              className="group relative aspect-[4/5] rounded-sm overflow-hidden border border-dotpic-border bg-dotpic-surface cursor-pointer hover:border-dotpic-gold/50 transition-all duration-300"
+              data-cursor="view"
+              maxTilt={7}
+              scale={1.03}
+              className="rounded-2xl overflow-hidden border border-dotpic-border/80 bg-dotpic-surface cursor-pointer hover:border-dotpic-gold/60 transition-all duration-300 shadow-xl group aspect-[4/5]"
             >
               <img
                 src={photo.url}
@@ -104,25 +108,25 @@ export function GalleryDetailPage() {
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-between">
-                <div className="flex justify-end">
-                  <span className="p-2 rounded-full bg-black/80 text-dotpic-gold border border-white/20">
+              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity p-5 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  {photo.exif_camera && (
+                    <span className="text-[10px] font-mono text-dotpic-gold px-2.5 py-1 rounded-full bg-black/80 border border-white/10">
+                      {photo.exif_camera} • {photo.exif_aperture || 'f/1.4'}
+                    </span>
+                  )}
+                  <span className="p-2 rounded-full bg-black/80 text-dotpic-gold border border-white/20 ml-auto">
                     <Eye className="w-4 h-4" />
                   </span>
                 </div>
 
                 <div>
-                  {photo.exif_camera && (
-                    <span className="text-[10px] font-mono text-dotpic-gold block">
-                      {photo.exif_camera} • {photo.exif_aperture || 'f/1.4'}
-                    </span>
-                  )}
-                  <h5 className="text-sm font-serif text-white font-medium truncate">
+                  <h5 className="text-base font-serif text-white font-medium truncate">
                     {photo.title || "Master Frame"}
                   </h5>
                 </div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

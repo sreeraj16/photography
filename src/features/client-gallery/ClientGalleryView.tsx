@@ -4,6 +4,7 @@ import { ClientGallery, ClientGalleryPhoto } from '../../types/database.types';
 import { dataStore } from '../../lib/dataStore';
 import { Lightbox } from '../../components/common/Lightbox';
 import { Button } from '../../components/ui/Button';
+import { TiltCard } from '../../components/ui/TiltCard';
 
 interface ClientGalleryViewProps {
   gallery: ClientGallery;
@@ -100,10 +101,12 @@ export function ClientGalleryView({ gallery, photos }: ClientGalleryViewProps) {
         {photos.map((photo, idx) => {
           const isFav = selectedFavourites.includes(photo.id);
           return (
-            <div
+            <TiltCard
               key={photo.id || idx}
-              className={`group relative rounded-sm overflow-hidden border bg-dotpic-surface transition-all duration-300 ${
-                isFav ? 'border-rose-500/80 shadow-[0_0_20px_rgba(244,63,94,0.2)]' : 'border-dotpic-border hover:border-dotpic-gold/50'
+              maxTilt={6}
+              scale={1.02}
+              className={`rounded-2xl overflow-hidden border bg-dotpic-surface transition-all duration-300 shadow-xl group ${
+                isFav ? 'border-rose-500 shadow-[0_0_25px_rgba(244,63,94,0.3)]' : 'border-dotpic-border hover:border-dotpic-gold/60'
               }`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
@@ -117,7 +120,10 @@ export function ClientGalleryView({ gallery, photos }: ClientGalleryViewProps) {
                 {/* Top Actions: Favourite Heart & Zoom */}
                 <div className="absolute top-3 right-3 flex items-center gap-2 z-10">
                   <button
-                    onClick={() => toggleFavourite(photo.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavourite(photo.id);
+                    }}
                     className={`p-2 rounded-full backdrop-blur-md transition-all ${
                       isFav
                         ? 'bg-rose-500 text-white shadow-lg'
@@ -129,7 +135,10 @@ export function ClientGalleryView({ gallery, photos }: ClientGalleryViewProps) {
                   </button>
 
                   <button
-                    onClick={() => setLightboxIndex(idx)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex(idx);
+                    }}
                     className="p-2 rounded-full bg-black/60 text-white/80 hover:text-white backdrop-blur-md"
                     title="Fullscreen Lightbox"
                   >
@@ -146,7 +155,7 @@ export function ClientGalleryView({ gallery, photos }: ClientGalleryViewProps) {
                   </span>
                 </div>
               </div>
-            </div>
+            </TiltCard>
           );
         })}
       </div>

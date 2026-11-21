@@ -3,7 +3,7 @@ import { cn } from '../../lib/utils';
 import { useAudio } from '../../hooks/useAudio';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'gold';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'gold' | 'cinema';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   isLoading?: boolean;
   withShutterSound?: boolean;
@@ -31,21 +31,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       if (onClick) onClick(e);
     };
 
-    const baseStyles = "relative inline-flex items-center justify-center font-medium tracking-wider uppercase transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-dotpic-gold disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden select-none";
+    const baseStyles = "relative inline-flex items-center justify-center font-sans uppercase transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-dotpic-gold disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden select-none active:scale-[0.98]";
 
     const variants = {
-      primary: "bg-dotpic-gold text-dotpic-black hover:bg-dotpic-goldLight font-semibold shadow-lg shadow-dotpic-gold/10",
-      secondary: "bg-dotpic-surface text-dotpic-white hover:bg-dotpic-surfaceHover border border-dotpic-border hover:border-dotpic-gold/40",
-      outline: "bg-transparent text-dotpic-white border border-dotpic-gold/40 hover:border-dotpic-gold hover:text-dotpic-gold hover:bg-dotpic-gold/5",
-      gold: "bg-gradient-to-r from-[#C9A96E] via-[#DFBF85] to-[#C9A96E] text-dotpic-black font-semibold hover:shadow-[0_0_20px_rgba(201,169,110,0.4)]",
-      ghost: "bg-transparent text-dotpic-muted hover:text-dotpic-white hover:bg-white/5",
+      primary: "bg-gradient-to-r from-[#C9A96E] via-[#DFBF85] to-[#B89255] text-dotpic-black font-bold tracking-[0.18em] shadow-[0_4px_20px_rgba(201,169,110,0.3)] hover:shadow-[0_6px_30px_rgba(201,169,110,0.5)] hover:-translate-y-0.5",
+      gold: "bg-gradient-to-r from-[#C9A96E] via-[#E8D1A7] to-[#C9A96E] text-dotpic-black font-bold tracking-[0.2em] shadow-[0_4px_25px_rgba(201,169,110,0.35)] hover:shadow-[0_8px_35px_rgba(201,169,110,0.6)] hover:-translate-y-0.5 border border-white/30",
+      secondary: "bg-dotpic-surface/90 text-dotpic-white hover:text-dotpic-gold hover:bg-dotpic-surface border border-dotpic-border hover:border-dotpic-gold/50 backdrop-blur-md tracking-[0.15em] font-medium shadow-md",
+      outline: "bg-black/40 text-dotpic-white border border-dotpic-gold/50 hover:border-dotpic-gold hover:text-dotpic-gold hover:bg-dotpic-gold/10 backdrop-blur-md tracking-[0.18em] font-medium shadow-[0_2px_15px_rgba(0,0,0,0.6)]",
+      cinema: "bg-black/70 text-dotpic-gold border border-dotpic-gold/40 hover:border-dotpic-gold hover:bg-dotpic-black text-white hover:shadow-[0_0_25px_rgba(201,169,110,0.3)] tracking-[0.2em] font-mono text-xs",
+      ghost: "bg-transparent text-dotpic-muted hover:text-dotpic-white hover:bg-white/5 tracking-[0.15em] font-medium",
     };
 
     const sizes = {
-      sm: "text-xs px-3.5 py-1.5 rounded-sm gap-1.5",
-      md: "text-xs px-5 py-2.5 rounded-sm gap-2",
-      lg: "text-sm px-7 py-3.5 rounded-sm gap-2.5 tracking-widest",
-      xl: "text-base px-9 py-4 rounded-sm gap-3 tracking-widest font-semibold",
+      sm: "text-[11px] px-3.5 py-2 rounded-full gap-1.5",
+      md: "text-xs px-5 py-2.5 rounded-full gap-2",
+      lg: "text-xs sm:text-sm px-7 py-3.5 rounded-full gap-2.5 font-semibold",
+      xl: "text-sm sm:text-base px-8 sm:px-10 py-4 rounded-full gap-3 font-bold",
     };
 
     return (
@@ -56,6 +57,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isLoading || props.disabled}
         {...props}
       >
+        {/* Animated Light Sweep Sheen */}
+        <span 
+          aria-hidden="true"
+          className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 ease-out pointer-events-none"
+        />
+
         {isLoading ? (
           <span className="flex items-center gap-2">
             <svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
@@ -66,8 +73,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         ) : (
           <>
-            {icon && <span className="transition-transform group-hover:scale-110">{icon}</span>}
-            <span>{children}</span>
+            {icon && <span className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">{icon}</span>}
+            <span className="relative z-10">{children}</span>
           </>
         )}
       </button>

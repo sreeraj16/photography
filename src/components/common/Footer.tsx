@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Youtube, Phone, ArrowUpRight, Send, CheckCircle2 } from 'lucide-react';
 import { BRAND, NAV_LINKS, SERVICE_CATEGORIES } from '../../lib/constants';
 import { Button } from '../ui/Button';
+import { DotpicLogo } from './DotpicLogo';
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -84,7 +85,7 @@ export function Footer() {
           {/* Brand info (2 cols) */}
           <div className="lg:col-span-2 space-y-6">
             <Link to="/" className="inline-block">
-              <img src="/logo.svg" alt="DOTPIC" className="h-10 w-auto" />
+              <DotpicLogo size="lg" />
             </Link>
             <p className="text-dotpic-muted text-sm leading-relaxed max-w-sm">
               {BRAND.tagline}

@@ -6,6 +6,7 @@ import { BRAND, NAV_LINKS } from '../../lib/constants';
 import { useI18n } from '../../lib/i18n';
 import { useAudio } from '../../hooks/useAudio';
 import { Button } from '../ui/Button';
+import { DotpicLogo } from './DotpicLogo';
 
 export function Header() {
   const location = useLocation();
@@ -58,11 +59,7 @@ export function Header() {
               aria-label="DOTPIC Photography Home"
               data-cursor="hover"
             >
-              <img
-                src="/logo.svg"
-                alt="DOTPIC PHOTOGRAPHY"
-                className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              />
+              <DotpicLogo size="md" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -195,7 +192,7 @@ export function Header() {
             {/* Top Bar inside Overlay */}
             <div className="flex justify-between items-center absolute top-4 left-6 right-6 pb-3 border-b border-dotpic-border/60">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <img src="/logo.svg" alt="DOTPIC" className="h-8 w-auto" />
+                <DotpicLogo size="sm" />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}

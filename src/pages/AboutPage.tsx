@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Youtube, Award, Camera, Heart, Sparkles, ArrowUpRight } from 'lucide-react';
 import { BRAND } from '../lib/constants';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function AboutPage() {
   const team = [
@@ -119,9 +120,11 @@ export function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, i) => (
-              <div
+              <TiltCard
                 key={i}
-                className="bg-dotpic-black border border-dotpic-border rounded-sm overflow-hidden group hover:border-dotpic-gold/50 transition-colors duration-300"
+                maxTilt={6}
+                scale={1.02}
+                className="bg-dotpic-black border border-dotpic-border/80 rounded-2xl overflow-hidden group hover:border-dotpic-gold/60 transition-colors duration-300 shadow-2xl"
               >
                 <div className="aspect-[4/5] overflow-hidden relative">
                   <img
@@ -134,20 +137,20 @@ export function AboutPage() {
                     href={member.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white hover:text-pink-400 border border-white/20 transition-colors"
+                    className="absolute top-4 right-4 p-2.5 rounded-full bg-black/60 text-white hover:text-pink-400 border border-white/20 transition-colors backdrop-blur-md"
                   >
                     <Instagram className="w-4 h-4" />
                   </a>
                 </div>
 
                 <div className="p-6">
-                  <span className="text-[10px] uppercase font-mono text-dotpic-gold tracking-widest block mb-1">
+                  <span className="text-[10px] uppercase font-mono text-dotpic-gold tracking-widest block mb-1 font-bold">
                     {member.role}
                   </span>
                   <h3 className="text-xl font-serif text-white mb-2">{member.name}</h3>
-                  <p className="text-xs text-dotpic-muted leading-relaxed">{member.bio}</p>
+                  <p className="text-xs text-dotpic-muted leading-relaxed font-light">{member.bio}</p>
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>

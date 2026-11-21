@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, MessageSquarePlus, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, MessageSquarePlus, Quote, CheckCircle2 } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
 import { ReviewModal } from '../../components/common/ReviewModal';
+import { Button } from '../../components/ui/Button';
 
 export function TestimonialsSection() {
   const testimonials = dataStore.getTestimonials(true);
@@ -19,11 +20,14 @@ export function TestimonialsSection() {
   const current = testimonials[currentIndex] || testimonials[0];
 
   return (
-    <section className="py-24 bg-dotpic-charcoal relative border-t border-b border-dotpic-border overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-28 bg-dotpic-charcoal relative border-t border-b border-dotpic-border overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 right-10 w-96 h-96 bg-dotpic-gold/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Numeral 10 */}
         <div className="text-center max-w-xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-3 mb-2">
+          <div className="inline-flex items-center gap-3 mb-3">
             <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-light">10</span>
             <div className="h-[1px] w-12 bg-dotpic-gold/50" />
             <span className="text-xs uppercase tracking-[0.3em] text-dotpic-gold font-semibold">
@@ -40,58 +44,65 @@ export function TestimonialsSection() {
 
         {/* Carousel Showcase Card */}
         {current && (
-          <div className="relative bg-dotpic-black border border-dotpic-border/80 rounded-sm p-8 sm:p-14 shadow-2xl">
+          <div className="relative bg-dotpic-black border border-dotpic-border/80 rounded-2xl p-8 sm:p-14 shadow-2xl">
             {/* Background Quote Watermark */}
-            <Quote className="absolute top-6 right-8 w-24 h-24 text-dotpic-surface/60 pointer-events-none rotate-12" />
+            <Quote className="absolute top-6 right-8 w-24 h-24 text-white/[0.03] pointer-events-none rotate-12" />
 
             <div className="relative z-10">
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-6">
-                {[...Array(current.rating || 5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
+              {/* Star Rating & Verified Badge */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex gap-1.5">
+                  {[...Array(current.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-semibold uppercase">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Verified Client Shoot</span>
+                </div>
               </div>
 
               {/* Quote Text */}
-              <blockquote className="text-lg sm:text-2xl font-serif text-dotpic-white font-light italic leading-relaxed mb-8">
+              <blockquote className="text-xl sm:text-3xl font-serif text-dotpic-white font-light italic leading-relaxed mb-10">
                 "{current.quote}"
               </blockquote>
 
               {/* Author Info & Nav Buttons */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-dotpic-border/60">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 border-t border-dotpic-border/60">
                 <div className="flex items-center gap-4">
                   {current.avatar_url && (
                     <img
                       src={current.avatar_url}
                       alt={current.client_name}
-                      className="w-12 h-12 rounded-full object-cover border border-dotpic-gold/40"
+                      className="w-14 h-14 rounded-full object-cover border-2 border-dotpic-gold/50 shadow-md"
                     />
                   )}
                   <div>
-                    <h3 className="text-sm sm:text-base font-serif text-white font-medium">
+                    <h3 className="text-base sm:text-lg font-serif text-white font-medium">
                       {current.client_name}
                     </h3>
-                    <p className="text-xs text-dotpic-muted">
-                      {current.role_or_event} • {current.college_or_location}
+                    <p className="text-xs text-dotpic-muted font-light">
+                      {current.role_or_event} • <span className="text-dotpic-gold font-mono">{current.college_or_location}</span>
                     </p>
                   </div>
                 </div>
 
                 {/* Next/Prev Controls */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <button
                     onClick={handlePrev}
-                    className="p-3 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors"
+                    className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold hover:bg-dotpic-surface transition-all shadow-md"
                     aria-label="Previous testimonial"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
-                  <span className="text-xs text-dotpic-gold font-mono px-2">
+                  <span className="text-xs text-dotpic-gold font-mono px-2 font-bold">
                     {currentIndex + 1} / {testimonials.length}
                   </span>
                   <button
                     onClick={handleNext}
-                    className="p-3 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors"
+                    className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold hover:bg-dotpic-surface transition-all shadow-md"
                     aria-label="Next testimonial"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -103,14 +114,15 @@ export function TestimonialsSection() {
         )}
 
         {/* Submit Review CTA */}
-        <div className="mt-12 text-center">
-          <button
+        <div className="mt-14 text-center">
+          <Button
+            variant="outline"
+            size="md"
             onClick={() => setShowReviewModal(true)}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-dotpic-gold hover:text-dotpic-goldLight font-semibold border border-dotpic-gold/30 hover:border-dotpic-gold px-5 py-2.5 rounded-sm transition-all duration-300 hover:bg-dotpic-gold/5"
+            icon={<MessageSquarePlus className="w-4 h-4 text-dotpic-gold" />}
           >
-            <MessageSquarePlus className="w-4 h-4" />
-            <span>Have You Worked With DOTPIC? Leave a Review</span>
-          </button>
+            Have You Worked With DOTPIC? Leave a Review
+          </Button>
         </div>
       </div>
 

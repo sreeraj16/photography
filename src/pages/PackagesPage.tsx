@@ -5,6 +5,7 @@ import { dataStore } from '../lib/dataStore';
 import { formatINR } from '../lib/utils';
 import { EstimateCalculator } from '../features/booking/EstimateCalculator';
 import { Button } from '../components/ui/Button';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function PackagesPage() {
   const packages = dataStore.getPackages().filter(p => p.is_enabled);
@@ -57,40 +58,44 @@ export function PackagesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
-            <div
+            <TiltCard
               key={pkg.id}
-              className={`relative bg-dotpic-charcoal border rounded-sm p-8 flex flex-col justify-between shadow-xl transition-all duration-300 ${
+              maxTilt={5}
+              scale={1.02}
+              className={`relative rounded-2xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl transition-all duration-300 ${
                 pkg.is_popular
-                  ? 'border-dotpic-gold ring-1 ring-dotpic-gold shadow-[0_0_40px_rgba(201,169,110,0.15)]'
-                  : 'border-dotpic-border hover:border-dotpic-gold/40'
+                  ? 'bg-gradient-to-b from-dotpic-charcoal via-black to-dotpic-charcoal border-2 border-dotpic-gold shadow-[0_0_40px_rgba(201,169,110,0.25)]'
+                  : 'bg-dotpic-charcoal border border-dotpic-border/80 hover:border-dotpic-gold/50'
               }`}
             >
               {pkg.is_popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-dotpic-gold via-dotpic-goldLight to-dotpic-gold text-dotpic-black text-[10px] font-bold tracking-widest uppercase px-4 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-dotpic-gold via-[#E8D1A7] to-dotpic-gold text-dotpic-black text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>SIGNATURE MOST POPULAR</span>
                 </div>
               )}
 
               <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-dotpic-gold block mb-2">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-dotpic-gold block mb-2 font-bold">
                   {pkg.duration}
                 </span>
-                <h3 className="text-2xl font-serif text-white mb-2">{pkg.name}</h3>
-                <p className="text-xs text-dotpic-muted leading-relaxed mb-6">{pkg.description}</p>
+                <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">{pkg.name}</h3>
+                <p className="text-xs text-dotpic-muted leading-relaxed mb-6 font-light">{pkg.description}</p>
 
-                <div className="mb-6 pb-6 border-b border-dotpic-border">
+                <div className="mb-6 pb-6 border-b border-dotpic-border/80">
                   <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-medium">
                     {formatINR(pkg.price_inr)}
                   </span>
-                  <span className="text-xs text-dotpic-muted ml-2">/ complete assignment</span>
+                  <span className="text-xs text-dotpic-muted ml-2 font-mono">/ complete assignment</span>
                 </div>
 
-                <ul className="space-y-3 mb-8 text-xs text-dotpic-muted">
+                <ul className="space-y-3.5 mb-8 text-xs text-dotpic-muted">
                   {pkg.inclusions.map((inc, i) => (
-                    <li key={i} className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-dotpic-gold flex-shrink-0 mt-0.5" />
-                      <span>{inc}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-4 h-4 rounded-full bg-dotpic-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-dotpic-gold" />
+                      </div>
+                      <span className="font-light">{inc}</span>
                     </li>
                   ))}
                 </ul>
@@ -103,7 +108,7 @@ export function PackagesPage() {
                 >
                   <Button
                     variant={pkg.is_popular ? 'gold' : 'outline'}
-                    size="md"
+                    size="lg"
                     className="w-full"
                     withShutterSound
                   >
@@ -111,7 +116,7 @@ export function PackagesPage() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

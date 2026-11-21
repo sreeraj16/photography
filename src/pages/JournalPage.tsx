@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Clock, ArrowUpRight, Search } from 'lucide-react';
 import { dataStore } from '../lib/dataStore';
 import { formatDate } from '../lib/utils';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function JournalPage() {
   const posts = dataStore.getJournalPosts().filter(p => p.is_published);
@@ -43,19 +44,20 @@ export function JournalPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((post) => (
-            <Link
+            <TiltCard
               key={post.id}
-              to={`/journal/${post.slug}`}
-              className="group bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden flex flex-col justify-between hover:border-dotpic-gold/50 transition-all shadow-xl"
+              maxTilt={6}
+              scale={1.02}
+              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 flex flex-col justify-between hover:border-dotpic-gold/60 transition-all shadow-xl group"
             >
-              <div>
+              <Link to={`/journal/${post.slug}`} className="block">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={post.cover_image_url}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute top-3 left-3 bg-black/80 px-2.5 py-0.5 rounded text-[10px] font-mono text-dotpic-gold border border-dotpic-gold/40 uppercase">
+                  <span className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-[10px] font-mono text-dotpic-gold border border-dotpic-gold/40 uppercase backdrop-blur-md font-bold">
                     {post.category}
                   </span>
                 </div>
@@ -64,7 +66,7 @@ export function JournalPage() {
                   <div className="flex items-center gap-3 text-[11px] text-dotpic-muted font-mono mb-2">
                     <span>{formatDate(post.published_at || post.created_at)}</span>
                     <span>•</span>
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-dotpic-gold">
                       <Clock className="w-3 h-3 text-dotpic-gold" />
                       {post.read_time}
                     </span>
@@ -74,17 +76,17 @@ export function JournalPage() {
                     {post.title}
                   </h3>
 
-                  <p className="text-xs text-dotpic-muted line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-dotpic-muted line-clamp-3 leading-relaxed font-light">
                     {post.excerpt}
                   </p>
                 </div>
-              </div>
+              </Link>
 
-              <div className="p-4 bg-dotpic-surface/60 border-t border-dotpic-border flex items-center justify-between text-xs text-dotpic-gold font-medium">
+              <div className="p-4 bg-dotpic-surface/60 border-t border-dotpic-border flex items-center justify-between text-xs text-dotpic-gold font-semibold">
                 <span>Read Full Article</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
-            </Link>
+            </TiltCard>
           ))}
         </div>
       </div>

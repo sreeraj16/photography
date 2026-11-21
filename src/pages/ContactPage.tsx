@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Instagram, Youtube, Send, ArrowUpRight, Clock, Che
 import { BRAND } from '../lib/constants';
 import { Button } from '../components/ui/Button';
 import { Input, Textarea } from '../components/ui/Input';
+import { TiltCard } from '../components/ui/TiltCard';
 
 export function ContactPage() {
   const [name, setName] = useState('');
@@ -48,67 +49,73 @@ ${message}`;
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* WhatsApp Card */}
-          <a
-            href={BRAND.socials.whatsapp.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-8 rounded-sm bg-gradient-to-br from-emerald-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-emerald-500/40 hover:border-emerald-500 transition-all duration-300 shadow-xl group block"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                <Phone className="w-6 h-6" />
+          <TiltCard maxTilt={6} scale={1.03} className="rounded-2xl overflow-hidden shadow-2xl">
+            <a
+              href={BRAND.socials.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-emerald-500/40 hover:border-emerald-500 transition-all duration-300 shadow-xl group block h-full"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-emerald-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
-              <ArrowUpRight className="w-4 h-4 text-emerald-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-            </div>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block mb-1">
-              FASTEST RESPONSE
-            </span>
-            <h3 className="text-xl font-serif text-white mb-1">WhatsApp Business</h3>
-            <p className="text-xs text-dotpic-muted mb-4">Daily coordination, instant availability & bespoke quotes.</p>
-            <span className="text-sm font-mono text-emerald-300 font-semibold">{BRAND.phone}</span>
-          </a>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block mb-1">
+                FASTEST RESPONSE
+              </span>
+              <h3 className="text-xl font-serif text-white mb-1">WhatsApp Business</h3>
+              <p className="text-xs text-dotpic-muted mb-4 font-light">Daily coordination, instant availability & bespoke quotes.</p>
+              <span className="text-sm font-mono text-emerald-300 font-bold">{BRAND.phone}</span>
+            </a>
+          </TiltCard>
 
           {/* Instagram Card */}
-          <a
-            href={BRAND.socials.instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-8 rounded-sm bg-gradient-to-br from-pink-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-pink-500/40 hover:border-pink-500 transition-all duration-300 shadow-xl group block"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center">
-                <Instagram className="w-6 h-6" />
+          <TiltCard maxTilt={6} scale={1.03} className="rounded-2xl overflow-hidden shadow-2xl">
+            <a
+              href={BRAND.socials.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 rounded-2xl bg-gradient-to-br from-pink-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-pink-500/40 hover:border-pink-500 transition-all duration-300 shadow-xl group block h-full"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center">
+                  <Instagram className="w-6 h-6" />
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-pink-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
-              <ArrowUpRight className="w-4 h-4 text-pink-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-            </div>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-pink-400 font-semibold block mb-1">
-              DAILY VISUAL FEED
-            </span>
-            <h3 className="text-xl font-serif text-white mb-1">Instagram Profile</h3>
-            <p className="text-xs text-dotpic-muted mb-4">Behind the scenes, fresh reel drops & client stories.</p>
-            <span className="text-sm font-mono text-pink-300 font-semibold">{BRAND.socials.instagram.handle}</span>
-          </a>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-pink-400 font-semibold block mb-1">
+                DAILY VISUAL FEED
+              </span>
+              <h3 className="text-xl font-serif text-white mb-1">Instagram Profile</h3>
+              <p className="text-xs text-dotpic-muted mb-4 font-light">Behind the scenes, fresh reel drops & client stories.</p>
+              <span className="text-sm font-mono text-pink-300 font-bold">{BRAND.socials.instagram.handle}</span>
+            </a>
+          </TiltCard>
 
           {/* YouTube Card */}
-          <a
-            href={BRAND.socials.youtube.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-8 rounded-sm bg-gradient-to-br from-red-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-red-500/40 hover:border-red-500 transition-all duration-300 shadow-xl group block"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center">
-                <Youtube className="w-6 h-6" />
+          <TiltCard maxTilt={6} scale={1.03} className="rounded-2xl overflow-hidden shadow-2xl">
+            <a
+              href={BRAND.socials.youtube.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 rounded-2xl bg-gradient-to-br from-red-950/40 via-dotpic-charcoal to-dotpic-charcoal border border-red-500/40 hover:border-red-500 transition-all duration-300 shadow-xl group block h-full"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center">
+                  <Youtube className="w-6 h-6" />
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-red-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
-              <ArrowUpRight className="w-4 h-4 text-red-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-            </div>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-red-400 font-semibold block mb-1">
-              4K CINEMA FILMS
-            </span>
-            <h3 className="text-xl font-serif text-white mb-1">YouTube Channel</h3>
-            <p className="text-xs text-dotpic-muted mb-4">Full wedding films, campus aftermovies & teasers.</p>
-            <span className="text-sm font-mono text-red-300 font-semibold">{BRAND.socials.youtube.handle}</span>
-          </a>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-red-400 font-semibold block mb-1">
+                4K CINEMA FILMS
+              </span>
+              <h3 className="text-xl font-serif text-white mb-1">YouTube Channel</h3>
+              <p className="text-xs text-dotpic-muted mb-4 font-light">Full wedding films, campus aftermovies & teasers.</p>
+              <span className="text-sm font-mono text-red-300 font-bold">{BRAND.socials.youtube.handle}</span>
+            </a>
+          </TiltCard>
         </div>
       </div>
 
