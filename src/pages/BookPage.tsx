@@ -8,26 +8,26 @@ export function BookPage() {
   const [showEstimator, setShowEstimator] = useState(false);
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* Hero Header */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-dotpic-gold/10 border border-dotpic-gold/30 text-dotpic-gold text-[10px] font-mono tracking-widest uppercase mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-widest uppercase mb-4">
           <Calendar className="w-3.5 h-3.5" />
           <span>OFFICIAL RESERVATION DESK</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-serif text-white font-light tracking-tight max-w-2xl mx-auto mb-4">
+        <h1 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-white font-light tracking-tight max-w-2xl mx-auto mb-4">
           Book Your Photography Slot
         </h1>
 
-        <p className="text-xs sm:text-sm text-dotpic-muted max-w-lg mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
           Fill out your session requirements. We will immediately generate your unique Reference ID and prepare a direct WhatsApp booking enquiry to our creative directors.
         </p>
 
         <div className="mt-4">
           <button
             onClick={() => setShowEstimator(!showEstimator)}
-            className="text-xs text-dotpic-gold underline hover:text-dotpic-goldLight font-mono"
+            className="text-xs text-teal-600 dark:text-teal-400 underline hover:text-teal-500 font-orbitron"
           >
             {showEstimator ? 'Hide Calculator' : 'Need a price estimate first? Open Price Calculator'}
           </button>

@@ -12,7 +12,7 @@ export function FAQPage() {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* FAQ Schema Markup for SEO */}
       <script type="application/ld+json">
         {JSON.stringify({

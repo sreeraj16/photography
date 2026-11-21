@@ -20,11 +20,11 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-dotpic-charcoal pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 h-[2.5px] bg-transparent pointer-events-none"
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-dotpic-gold via-amber-300 to-dotpic-gold shadow-[0_0_8px_rgba(201,169,110,0.8)] transition-all duration-75 ease-out"
+        className="h-full bg-gradient-to-r from-teal-600 via-teal-400 to-teal-300 shadow-[0_0_10px_rgba(20,184,166,0.8)] transition-all duration-75 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>

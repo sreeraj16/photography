@@ -9,7 +9,7 @@ export function JournalDetailPage() {
   const post = dataStore.getJournalPostBySlug(slug || '') || dataStore.getJournalPosts()[0];
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Link
           to="/journal"

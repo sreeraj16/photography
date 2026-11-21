@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Eye, Camera, Aperture } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eye, Camera } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { Lightbox } from '../../components/common/Lightbox';
@@ -22,33 +22,33 @@ export function HorizontalScroll() {
   };
 
   return (
-    <section className="py-28 bg-dotpic-charcoal relative overflow-hidden border-t border-b border-dotpic-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+    <section className="py-24 sm:py-32 bg-[#FAF7F2] dark:bg-[#080C0E] relative overflow-hidden border-t border-b border-[#E4DCD0] dark:border-slate-800 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex items-end justify-between">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-light">06</span>
-              <div className="h-[1px] w-12 bg-dotpic-gold/50" />
-              <span className="text-xs uppercase tracking-[0.3em] text-dotpic-gold font-semibold">
-                CURATED STRIP
+              <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">05</span>
+              <div className="h-[2px] w-12 bg-teal-500/50" />
+              <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
+                CURATED STREAM
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-dotpic-white font-light">
-              Signature 35mm Panoramic Stream
+            <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
+              Signature Panoramic Stream
             </h2>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleScroll('left')}
-              className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold hover:bg-dotpic-surface transition-all shadow-md"
+              className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
               aria-label="Scroll stream left"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => handleScroll('right')}
-              className="p-3.5 rounded-full border border-dotpic-border text-dotpic-muted hover:text-white hover:border-dotpic-gold hover:bg-dotpic-surface transition-all shadow-md"
+              className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
               aria-label="Scroll stream right"
             >
               <ChevronRight className="w-5 h-5" />
@@ -57,25 +57,11 @@ export function HorizontalScroll() {
         </div>
       </div>
 
-      {/* 35mm Sprocket Perforations Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-2">
-        <div className="h-3 bg-black/60 rounded-t-sm border-t border-l border-r border-white/10 flex items-center justify-between px-3 overflow-hidden select-none">
-          <div className="flex gap-4">
-            {[...Array(24)].map((_, i) => (
-              <span key={i} className="w-2.5 h-1.5 rounded-[1px] bg-dotpic-surface border border-white/15 inline-block" />
-            ))}
-          </div>
-          <span className="text-[8px] font-mono text-dotpic-gold tracking-widest uppercase hidden sm:inline">
-            35MM FILM REEL 2026 • 24 FPS
-          </span>
-        </div>
-      </div>
-
-      {/* Horizontal Scrolling Flex Track with 3D Tilt Cards */}
+      {/* Horizontal Scrolling Flex Track */}
       <div
         ref={scrollRef}
         data-cursor="drag"
-        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 py-3 snap-x snap-mandatory cursor-grab active:cursor-grabbing touch-scroll"
+        className="flex gap-6 overflow-x-auto scrollbar-none px-4 sm:px-8 py-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing touch-scroll"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {photos.map((p, idx) => (
@@ -83,9 +69,9 @@ export function HorizontalScroll() {
             key={p.id || idx}
             onClick={() => handleOpenPhoto(idx)}
             data-cursor="view"
-            maxTilt={7}
-            scale={1.03}
-            className="flex-shrink-0 w-80 sm:w-96 aspect-[3/4] snap-center rounded-xl overflow-hidden border border-dotpic-border/80 group shadow-2xl transition-colors duration-300 hover:border-dotpic-gold/60 cursor-pointer"
+            maxTilt={6}
+            scale={1.02}
+            className="flex-shrink-0 w-80 sm:w-96 aspect-[3/4] snap-center rounded-2xl overflow-hidden border border-[#E2DCD0] dark:border-slate-800 group shadow-md dark:shadow-2xl transition-all duration-300 hover:border-teal-500/70 cursor-pointer bg-slate-950"
           >
             <img
               src={p.url}
@@ -94,21 +80,21 @@ export function HorizontalScroll() {
               loading="lazy"
             />
             
-            {/* Film Gradient Shadow */}
-            <div className="absolute inset-0 bg-gradient-to-t from-dotpic-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            {/* Gradient Shadow */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity" />
 
             {/* Hover Camera Tag */}
-            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono text-dotpic-gold tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-              <Camera className="w-3 h-3 text-dotpic-gold" />
+            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-orbitron text-teal-300 tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+              <Camera className="w-3 h-3 text-teal-400" />
               <span>{p.exif_camera || "SONY G MASTER"}</span>
             </div>
 
-            <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-dotpic-gold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 backdrop-blur-md border border-teal-500/40 text-teal-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
               <Eye className="w-4 h-4" />
             </div>
 
             <div className="absolute bottom-5 left-5 right-5">
-              <span className="text-[10px] font-mono uppercase text-dotpic-gold tracking-widest block mb-1">
+              <span className="text-[10px] font-orbitron uppercase text-teal-300 tracking-widest block mb-1">
                 FRAME 00{idx + 1} • {p.exif_aperture || "f/1.4"}
               </span>
               <h4 className="text-lg font-serif text-white font-medium drop-shadow-md">
@@ -117,20 +103,6 @@ export function HorizontalScroll() {
             </div>
           </TiltCard>
         ))}
-      </div>
-
-      {/* 35mm Sprocket Perforations Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 mt-2">
-        <div className="h-3 bg-black/60 rounded-b-sm border-b border-l border-r border-white/10 flex items-center justify-between px-3 overflow-hidden select-none">
-          <div className="flex gap-4">
-            {[...Array(24)].map((_, i) => (
-              <span key={i} className="w-2.5 h-1.5 rounded-[1px] bg-dotpic-surface border border-white/15 inline-block" />
-            ))}
-          </div>
-          <span className="text-[8px] font-mono text-dotpic-muted tracking-widest uppercase hidden sm:inline">
-            MASTER STILL RETOUCH • HYDERABAD
-          </span>
-        </div>
       </div>
 
       {/* Lightbox for Stream Photos */}

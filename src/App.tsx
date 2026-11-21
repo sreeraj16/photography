@@ -12,6 +12,7 @@ import { AnnouncementBar } from './components/common/AnnouncementBar';
 import { MobileStickyBar } from './components/common/MobileStickyBar';
 
 // Context & Data
+import { ThemeProvider } from './lib/theme';
 import { I18nContext, Language, getTranslations } from './lib/i18n';
 import { dataStore } from './lib/dataStore';
 
@@ -163,11 +164,13 @@ export function App() {
   };
 
   return (
-    <I18nContext.Provider value={i18nValue}>
-      <BrowserRouter>
-        <AppShell />
-      </BrowserRouter>
-    </I18nContext.Provider>
+    <ThemeProvider>
+      <I18nContext.Provider value={i18nValue}>
+        <BrowserRouter>
+          <AppShell />
+        </BrowserRouter>
+      </I18nContext.Provider>
+    </ThemeProvider>
   );
 }
 

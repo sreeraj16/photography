@@ -42,7 +42,7 @@ export function FindMyPhotosPage() {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* Header */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono tracking-widest uppercase mb-4">

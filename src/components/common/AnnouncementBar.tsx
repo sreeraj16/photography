@@ -23,28 +23,28 @@ export function AnnouncementBar({
   };
 
   return (
-    <div className="bg-gradient-to-r from-dotpic-charcoal via-amber-950/40 to-dotpic-charcoal border-b border-dotpic-gold/30 py-2 px-4 text-xs text-dotpic-white relative z-50">
+    <div className="bg-[#FAF7F2] dark:bg-[#0C1318] border-b border-[#E2DCD0] dark:border-teal-500/30 py-2 px-4 text-xs text-slate-800 dark:text-slate-200 relative z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <div className="flex-1 flex items-center justify-center text-center gap-2">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-dotpic-gold animate-ping" />
-          <span className="font-light tracking-wide text-dotpic-muted">
+          <span className="inline-block w-2 h-2 rounded-full bg-teal-500 animate-ping" />
+          <span className="font-orbitron text-[11px] font-medium tracking-wide text-slate-700 dark:text-slate-300">
             {text}
           </span>
           <a
             href={BRAND.socials.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1 text-dotpic-gold hover:underline font-medium ml-1"
+            className="hidden sm:inline-flex items-center gap-1 text-teal-600 dark:text-teal-400 hover:underline font-orbitron font-semibold ml-1"
           >
             Follow @_dotpic_ <ArrowRight className="w-3 h-3" />
           </a>
         </div>
         <button
           onClick={handleDismiss}
-          className="p-1 text-dotpic-muted hover:text-dotpic-white transition-colors"
+          className="p-1 text-slate-500 hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"
           aria-label="Dismiss Announcement"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="w-4 h-4" />
         </button>
       </div>
     </div>

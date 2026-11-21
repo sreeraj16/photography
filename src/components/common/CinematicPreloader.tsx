@@ -44,26 +44,26 @@ export function CinematicPreloader({ onComplete }: CinematicPreloaderProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-dotpic-black flex flex-col items-center justify-center transition-all duration-700 select-none ${
+      className={`fixed inset-0 z-[100] bg-[#060A0E] flex flex-col items-center justify-center transition-all duration-700 select-none ${
         isFinished ? 'opacity-0 pointer-events-none scale-105' : 'opacity-100'
       }`}
     >
       <div className="flex flex-col items-center text-center px-6 max-w-md w-full">
         {/* Official DOTPIC Logo Animation */}
-        <div className="relative mb-6 drop-shadow-[0_0_35px_rgba(201,169,110,0.3)]">
+        <div className="relative mb-6 drop-shadow-[0_0_35px_rgba(20,184,166,0.35)]">
           <DotpicLogo size="xl" />
         </div>
 
         {/* Cinematic Progress Bar */}
-        <div className="w-48 sm:w-64 h-[2px] bg-dotpic-surface overflow-hidden rounded-full mb-3">
+        <div className="w-48 sm:w-64 h-[2px] bg-slate-800 overflow-hidden rounded-full mb-3">
           <div
-            className="h-full bg-gradient-to-r from-dotpic-gold/50 via-dotpic-gold to-dotpic-goldLight transition-all duration-200 ease-out"
+            className="h-full bg-gradient-to-r from-teal-600 via-teal-400 to-teal-300 transition-all duration-200 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        <div className="flex justify-between w-48 sm:w-64 text-[10px] text-dotpic-muted font-mono tracking-widest">
-          <span>LOADING STORY</span>
+        <div className="flex justify-between w-48 sm:w-64 text-[10px] text-teal-400/80 font-orbitron tracking-widest">
+          <span>LOADING STUDIO</span>
           <span>{progress}%</span>
         </div>
       </div>

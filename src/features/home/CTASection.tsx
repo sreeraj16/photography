@@ -5,35 +5,35 @@ import { Button } from '../../components/ui/Button';
 
 export function CTASection() {
   return (
-    <section className="py-32 bg-dotpic-black relative overflow-hidden border-t border-dotpic-border">
+    <section className="py-24 sm:py-32 bg-[#FAF7F2] dark:bg-[#080C0E] relative overflow-hidden border-t border-[#E4DCD0] dark:border-slate-800 transition-colors duration-300">
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-dotpic-gold/8 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dotpic-gold/10 border border-dotpic-gold/30 text-dotpic-gold text-[10px] font-mono tracking-widest uppercase mb-6 shadow-lg">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-widest uppercase mb-6 shadow-sm">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>YOUR STORY DESERVES TIMELESS CRAFTSMANSHIP</span>
+          <span>TIMELESS CRAFTSMANSHIP</span>
         </div>
 
-        <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-dotpic-white font-light tracking-tight leading-[1.08] mb-6 uppercase">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-orbitron font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6 uppercase">
           LET'S CREATE SOMETHING{' '}
-          <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-dotpic-gold via-[#F0DEC0] to-dotpic-gold font-normal drop-shadow-[0_2px_25px_rgba(201,169,110,0.5)]">
+          <span className="block mt-2 font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-teal-400 to-teal-600 dark:from-teal-400 dark:via-teal-200 dark:to-teal-400 drop-shadow-[0_2px_25px_rgba(20,184,166,0.3)]">
             TIMELESS.
           </span>
         </h2>
 
-        <p className="text-sm sm:text-lg text-dotpic-muted max-w-xl mx-auto font-light leading-relaxed mb-12">
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto font-sans leading-relaxed mb-10">
           Whether you are planning a grand royal wedding, an unforgettable college fest, or an editorial fashion collection—our calendar fills up months in advance.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
           <Link to="/book" className="w-full sm:w-auto">
             <Button
               size="xl"
-              variant="gold"
-              className="w-full sm:w-auto shadow-[0_4px_30px_rgba(201,169,110,0.4)]"
+              variant="primary"
+              className="w-full sm:w-auto px-8"
               withShutterSound
-              icon={<Calendar className="w-4 h-4 text-dotpic-black" />}
+              icon={<Calendar className="w-4 h-4 text-white" />}
             >
               BOOK YOUR SHOOT NOW
             </Button>
@@ -47,17 +47,17 @@ export function CTASection() {
           >
             <Button
               size="xl"
-              variant="outline"
-              className="w-full sm:w-auto border-emerald-500/50 text-emerald-300 hover:border-emerald-400 hover:text-emerald-200 hover:bg-emerald-950/30 shadow-[0_0_20px_rgba(16,185,129,0.2)]"
-              icon={<Phone className="w-4 h-4 text-emerald-400" />}
+              variant="secondary"
+              className="w-full sm:w-auto px-8"
+              icon={<Phone className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
             >
               DIRECT WHATSAPP CHAT
             </Button>
           </a>
         </div>
 
-        <p className="text-xs text-dotpic-muted/70 mt-8 font-mono tracking-wider">
-          Fast response within 2 hours • WhatsApp Business: <a href={BRAND.socials.whatsapp.url} target="_blank" rel="noopener noreferrer" className="text-dotpic-gold hover:underline">+91 6281392682</a>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-8 font-orbitron tracking-wider">
+          Fast response within 2 hours • WhatsApp Business: <a href={BRAND.socials.whatsapp.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:underline">+91 6281392682</a>
         </p>
       </div>
     </section>

@@ -24,30 +24,30 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-dotpic-charcoal border-t border-dotpic-border relative overflow-hidden">
-      {/* 1. "FOLLOW THE FRAMES" Marquee & Magnetic Action Band */}
-      <div className="border-b border-dotpic-border/80 bg-dotpic-black/60 py-8 relative">
+    <footer className="bg-[#F5F1E8] dark:bg-[#070A0D] border-t border-[#E4DCD0] dark:border-slate-800 relative overflow-hidden transition-colors duration-300">
+      {/* 1. "FOLLOW THE FRAMES" Marquee & Action Band */}
+      <div className="border-b border-[#E4DCD0] dark:border-slate-800/80 bg-[#EFE9DD]/50 dark:bg-black/50 py-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-[11px] uppercase tracking-[0.3em] text-dotpic-gold font-semibold block mb-1">
+              <span className="text-[10px] uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold block mb-1">
                 Official Channels
               </span>
-              <h3 className="text-2xl sm:text-3xl font-serif text-dotpic-white">
-                Follow The Frames: <span className="text-dotpic-gold italic font-light">@_dotpic_</span>
+              <h3 className="text-xl sm:text-2xl font-serif text-slate-900 dark:text-white">
+                Follow The Frames: <span className="text-teal-600 dark:text-teal-400 italic font-normal">@_dotpic_</span>
               </h3>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={BRAND.socials.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-sm bg-gradient-to-r from-purple-900/40 via-pink-900/40 to-orange-900/30 border border-pink-500/30 text-white text-xs uppercase tracking-widest font-semibold hover:border-pink-500/80 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-white text-xs font-orbitron uppercase tracking-wider font-semibold hover:border-pink-500 hover:text-pink-600 transition-all shadow-sm"
                 aria-label={BRAND.socials.instagram.label}
               >
-                <Instagram className="w-4 h-4 text-pink-400" />
-                <span>Instagram @_dotpic_</span>
+                <Instagram className="w-4 h-4 text-pink-500" />
+                <span>Instagram</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
               </a>
 
@@ -55,11 +55,11 @@ export function Footer() {
                 href={BRAND.socials.youtube.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-sm bg-red-950/40 border border-red-500/30 text-white text-xs uppercase tracking-widest font-semibold hover:border-red-500/80 hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-white text-xs font-orbitron uppercase tracking-wider font-semibold hover:border-red-500 hover:text-red-600 transition-all shadow-sm"
                 aria-label={BRAND.socials.youtube.label}
               >
                 <Youtube className="w-4 h-4 text-red-500" />
-                <span>YouTube @dotpicphotography</span>
+                <span>YouTube</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
               </a>
 
@@ -67,12 +67,12 @@ export function Footer() {
                 href={BRAND.socials.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-sm bg-emerald-950/40 border border-emerald-500/30 text-emerald-200 text-xs uppercase tracking-widest font-semibold hover:border-emerald-500/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-teal-600 hover:bg-teal-500 text-white text-xs font-orbitron uppercase tracking-wider font-semibold shadow-md transition-all"
                 aria-label={BRAND.socials.whatsapp.label}
               >
-                <Phone className="w-4 h-4 text-emerald-400" />
+                <Phone className="w-4 h-4 text-white" />
                 <span>WhatsApp Us</span>
-                <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
               </a>
             </div>
           </div>
@@ -87,20 +87,20 @@ export function Footer() {
             <Link to="/" className="inline-block">
               <DotpicLogo size="lg" />
             </Link>
-            <p className="text-dotpic-muted text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm font-sans">
               {BRAND.tagline}
             </p>
-            <p className="text-xs text-dotpic-muted/80 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm font-sans">
               Based in Jubilee Hills, Hyderabad. Available worldwide for royal weddings, campus festivals, and commercial campaigns.
             </p>
 
             {/* Newsletter signup */}
             <div className="pt-2 max-w-sm">
-              <span className="text-[11px] uppercase tracking-widest text-dotpic-gold font-semibold block mb-2">
+              <span className="text-[10px] uppercase font-orbitron tracking-widest text-teal-600 dark:text-teal-400 font-semibold block mb-2">
                 Join The VIP Journal
               </span>
               {subscribed ? (
-                <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 p-2.5 rounded-sm border border-emerald-500/20">
+                <div className="flex items-center gap-2 text-xs text-teal-700 dark:text-teal-300 bg-teal-500/10 p-2.5 rounded-xl border border-teal-500/30">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                   <span>Thank you for subscribing! We share shoot stories & tips.</span>
                 </div>
@@ -112,9 +112,9 @@ export function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="flex-1 bg-dotpic-surface border border-dotpic-border px-3.5 py-2.5 rounded-sm text-xs text-dotpic-white placeholder:text-dotpic-muted/50 focus:outline-none focus:border-dotpic-gold"
+                    className="flex-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-4 py-2.5 rounded-full text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-500"
                   />
-                  <Button type="submit" size="sm" variant="gold" icon={<Send className="w-3 h-3" />}>
+                  <Button type="submit" size="sm" variant="primary" icon={<Send className="w-3 h-3" />}>
                     Join
                   </Button>
                 </form>
@@ -124,32 +124,32 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-dotpic-gold font-semibold">
+            <h4 className="text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 font-semibold">
               Explore
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-2.5 text-xs font-sans">
               {NAV_LINKS.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-dotpic-muted hover:text-dotpic-white transition-colors duration-200 block py-0.5"
+                    className="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors block py-0.5"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/links" className="text-amber-400 hover:text-amber-300 font-medium block py-0.5">
+                <Link to="/links" className="text-teal-600 dark:text-teal-400 hover:underline font-orbitron text-[11px] block py-0.5">
                   Link-in-Bio Hub (/links)
                 </Link>
               </li>
               <li>
-                <Link to="/client-gallery" className="text-dotpic-gold hover:underline block py-0.5">
+                <Link to="/client-gallery" className="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 block py-0.5">
                   Client Gallery Access
                 </Link>
               </li>
               <li>
-                <Link to="/track" className="text-dotpic-muted hover:text-dotpic-white block py-0.5">
+                <Link to="/track" className="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 block py-0.5">
                   Track My Enquiry
                 </Link>
               </li>
@@ -158,15 +158,15 @@ export function Footer() {
 
           {/* Signature Services */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-dotpic-gold font-semibold">
+            <h4 className="text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 font-semibold">
               Services
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-2.5 text-xs font-sans">
               {SERVICE_CATEGORIES.slice(0, 6).map((service) => (
                 <li key={service.id}>
                   <Link
                     to={`/services/${service.slug}`}
-                    className="text-dotpic-muted hover:text-dotpic-white transition-colors duration-200 block py-0.5"
+                    className="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors block py-0.5"
                   >
                     {service.name} Photography
                   </Link>
@@ -177,28 +177,28 @@ export function Footer() {
 
           {/* Contact Details */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-dotpic-gold font-semibold">
+            <h4 className="text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 font-semibold">
               Direct Contact
             </h4>
-            <div className="space-y-2.5 text-xs text-dotpic-muted">
+            <div className="space-y-2.5 text-xs text-slate-600 dark:text-slate-400 font-sans">
               <p>
-                <span className="block text-dotpic-white font-medium">WhatsApp Business</span>
-                <a href={BRAND.socials.whatsapp.url} target="_blank" rel="noopener noreferrer" className="text-dotpic-gold hover:underline">
+                <span className="block text-slate-900 dark:text-slate-200 font-medium">WhatsApp Business</span>
+                <a href={BRAND.socials.whatsapp.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:underline font-orbitron text-[11px]">
                   +91 6281392682
                 </a>
               </p>
               <p>
-                <span className="block text-dotpic-white font-medium">Email Inquiries</span>
-                <a href={`mailto:${BRAND.email}`} className="hover:text-dotpic-white">
+                <span className="block text-slate-900 dark:text-slate-200 font-medium">Email Inquiries</span>
+                <a href={`mailto:${BRAND.email}`} className="hover:text-teal-600 dark:hover:text-teal-400">
                   {BRAND.email}
                 </a>
               </p>
               <p>
-                <span className="block text-dotpic-white font-medium">Studio Location</span>
+                <span className="block text-slate-900 dark:text-slate-200 font-medium">Studio Location</span>
                 <span>{BRAND.fullAddress}</span>
               </p>
               <div className="pt-2">
-                <Link to="/admin/login" className="text-[11px] text-dotpic-muted/60 hover:text-dotpic-gold transition-colors">
+                <Link to="/admin/login" className="text-[11px] text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors font-orbitron">
                   Studio Staff Portal →
                 </Link>
               </div>
@@ -208,20 +208,20 @@ export function Footer() {
       </div>
 
       {/* 3. Bottom Legal & Copyright Bar */}
-      <div className="border-t border-dotpic-border/60 py-6 pb-24 lg:pb-6 text-xs text-dotpic-muted/70">
+      <div className="border-t border-[#E4DCD0] dark:border-slate-800/60 py-6 pb-24 lg:pb-6 text-xs text-slate-500 dark:text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} DOTPIC PHOTOGRAPHY. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="hover:text-dotpic-white transition-colors">
+            <Link to="/privacy" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-dotpic-white transition-colors">
+            <Link to="/terms" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Terms of Service
             </Link>
-            <Link to="/faq" className="hover:text-dotpic-white transition-colors">
+            <Link to="/faq" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               FAQ
             </Link>
-            <Link to="/admin/login" className="hover:text-dotpic-gold transition-colors font-medium">
+            <Link to="/admin/login" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors font-orbitron font-medium">
               Admin
             </Link>
           </div>

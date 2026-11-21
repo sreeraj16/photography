@@ -17,18 +17,18 @@ export function FilmsPage() {
     : videos.filter(v => v.category === activeCategory);
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-950/40 border border-red-500/40 text-red-300 text-[10px] font-mono tracking-widest uppercase mb-4">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-[10px] font-orbitron tracking-widest uppercase mb-4">
           <Youtube className="w-3.5 h-3.5 text-red-500" />
           <span>OFFICIAL 4K CINEMA HUB</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
+        <h1 className="text-4xl sm:text-6xl font-serif text-slate-900 dark:text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
           DOTPIC Films & Showreels
         </h1>
-        <p className="text-xs sm:text-sm text-dotpic-muted max-w-xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
           Crafted with anamorphic glass, custom sound design, and emotive documentary pacing.
         </p>
 

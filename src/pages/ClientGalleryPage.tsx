@@ -54,7 +54,7 @@ export function ClientGalleryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-dotpic-black text-dotpic-white pt-24 pb-20">
+    <div className="min-h-screen bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 pt-24 pb-20 transition-colors duration-300">
       {isUnlocked ? (
         <ClientGalleryView gallery={gallery} photos={photos} />
       ) : (

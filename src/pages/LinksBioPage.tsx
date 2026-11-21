@@ -32,7 +32,7 @@ export function LinksBioPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dotpic-black text-dotpic-white flex flex-col items-center justify-between p-4 sm:p-6 pt-12 pb-12 relative overflow-hidden">
+    <div className="min-h-screen bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-between p-4 sm:p-6 pt-12 pb-12 relative overflow-hidden transition-colors duration-300">
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-dotpic-gold/5 rounded-full blur-[100px] pointer-events-none" />
 

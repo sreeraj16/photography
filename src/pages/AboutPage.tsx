@@ -30,15 +30,15 @@ export function AboutPage() {
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <span className="text-[10px] uppercase font-mono tracking-[0.3em] text-dotpic-gold font-semibold block mb-2">
+        <span className="text-[10px] uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold block mb-2">
           THE ARTISANS BEHIND THE LENS
         </span>
-        <h1 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight max-w-3xl mx-auto leading-tight">
+        <h1 className="text-4xl sm:text-6xl font-serif text-slate-900 dark:text-white font-light tracking-tight max-w-3xl mx-auto leading-tight">
           Every Frame Tells a Story.{' '}
-          <span className="italic text-dotpic-gold font-normal">Every Moment Becomes Timeless.</span>
+          <span className="italic text-teal-600 dark:text-teal-400 font-normal">Every Moment Becomes Timeless.</span>
         </h1>
       </div>
 

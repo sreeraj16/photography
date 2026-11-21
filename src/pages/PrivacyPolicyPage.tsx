@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom';
 
 export function PrivacyPolicyPage() {
   return (
-    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-24 pb-20 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-3xl sm:text-5xl font-serif text-white mb-6">
+        <h1 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-white mb-6">
           Privacy Policy & DPDP Compliance
         </h1>
-        <p className="text-xs text-dotpic-gold font-mono mb-8">
+        <p className="text-xs text-teal-600 dark:text-teal-400 font-orbitron mb-8">
           Last Updated: November 2026 • Compliant with the Digital Personal Data Protection Act (India)
         </p>
 
-        <div className="prose prose-invert max-w-none text-xs sm:text-sm text-dotpic-muted space-y-6 leading-relaxed">
+        <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-6 leading-relaxed">
           <p>
             At DOTPIC PHOTOGRAPHY ("we", "our", or "us"), safeguarding client privacy and personal dignity is paramount. This Privacy Policy outlines our transparent data practices across our website, private client galleries, and campus photography services.
           </p>

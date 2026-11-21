@@ -32,16 +32,16 @@ export function PortfolioPage() {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-dotpic-black text-dotpic-white min-h-screen">
+    <div className="pt-28 pb-24 bg-[#FAF7F2] dark:bg-[#080C0E] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <span className="text-[10px] uppercase font-mono tracking-[0.3em] text-dotpic-gold font-semibold block mb-2">
+        <span className="text-[10px] uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold block mb-2">
           MASTER ARCHIVE
         </span>
-        <h1 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
+        <h1 className="text-4xl sm:text-6xl font-serif text-slate-900 dark:text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
           Signature Frames & Albums
         </h1>
-        <p className="text-xs sm:text-sm text-dotpic-muted max-w-xl mx-auto leading-relaxed font-light">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
           Filter through our royal wedding celebrations, collegiate memories, and editorial portrait archives.
         </p>
       </div>
@@ -53,10 +53,10 @@ export function PortfolioPage() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-orbitron uppercase tracking-wider transition-all ${
                 selectedCategory === 'all'
-                  ? 'bg-dotpic-gold text-dotpic-black font-bold shadow-[0_0_15px_rgba(201,169,110,0.4)]'
-                  : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+                  ? 'bg-teal-600 text-white font-semibold shadow-md'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 border border-slate-300 dark:border-slate-800'
               }`}
             >
               All Works
@@ -65,10 +65,10 @@ export function PortfolioPage() {
               <button
                 key={c.id}
                 onClick={() => setSelectedCategory(c.slug)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all ${
+                className={`px-4 py-2 rounded-full text-xs font-orbitron uppercase tracking-wider transition-all ${
                   selectedCategory === c.slug
-                    ? 'bg-dotpic-gold text-dotpic-black font-bold shadow-[0_0_15px_rgba(201,169,110,0.4)]'
-                    : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+                    ? 'bg-teal-600 text-white font-semibold shadow-md'
+                    : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 border border-slate-300 dark:border-slate-800'
                 }`}
               >
                 {c.name}
@@ -82,7 +82,7 @@ export function PortfolioPage() {
               onClick={() => setLayoutMode('masonry')}
               className={`p-2.5 rounded-full border transition-all ${
                 layoutMode === 'masonry'
-                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold shadow-md'
+                  ? 'bg-teal-600 text-white border-teal-600 shadow-md'
                   : 'bg-dotpic-surface text-dotpic-muted border-dotpic-border hover:text-white'
               }`}
               title="Masonry Mode"

@@ -12,24 +12,24 @@ export function CampusStoriesPreview() {
   const [activeQrEvent, setActiveQrEvent] = useState<CampusEvent | null>(null);
 
   return (
-    <section className="py-28 bg-gradient-to-b from-dotpic-charcoal via-dotpic-black to-dotpic-charcoal relative border-t border-b border-dotpic-border overflow-hidden">
+    <section className="py-24 sm:py-32 bg-[#F5F1E8] dark:bg-[#0B1014] relative border-t border-b border-[#E4DCD0] dark:border-slate-800/80 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header with Numeral 04 */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-light">04</span>
-              <div className="h-[1px] w-12 bg-dotpic-gold/50" />
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[10px] font-mono tracking-widest uppercase">
+              <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">04</span>
+              <div className="h-[2px] w-12 bg-teal-500/50" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-wider uppercase">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>MAJOR BRAND PILLAR</span>
+                <span>COLLEGE ARCHIVES</span>
               </div>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-dotpic-white font-light">
+            <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
               Campus Stories
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-dotpic-muted max-w-md font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md font-sans leading-relaxed">
             South India's most trusted college fest photography team. Covering collegiate concerts, technical symposiums, and cultural milestones with instant QR access for students.
           </p>
         </div>
@@ -41,20 +41,20 @@ export function CampusStoriesPreview() {
               key={event.id}
               maxTilt={6}
               scale={1.02}
-              className="rounded-xl overflow-hidden bg-dotpic-black border border-dotpic-border/80 shadow-2xl transition-colors duration-500 hover:border-dotpic-gold/60 flex flex-col justify-between group"
+              className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 shadow-[0_4px_25px_rgba(0,0,0,0.05)] dark:shadow-2xl transition-all duration-300 hover:border-teal-500/60 flex flex-col justify-between group"
             >
               {/* Event Image */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-dotpic-surface">
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img
                   src={event.cover_image_url}
                   alt={event.title}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dotpic-black via-black/25 to-transparent opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
                 
                 {/* College Badge */}
-                <span className="absolute top-4 left-4 bg-dotpic-black/80 backdrop-blur-md border border-dotpic-gold/40 text-dotpic-gold px-3 py-1 text-[10px] uppercase font-mono tracking-wider rounded-full shadow-lg">
+                <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-teal-500/40 text-teal-300 px-3 py-1 text-[10px] uppercase font-orbitron tracking-wider rounded-full shadow-lg">
                   {event.college_name}
                 </span>
 
@@ -64,19 +64,19 @@ export function CampusStoriesPreview() {
                     e.stopPropagation();
                     setActiveQrEvent(event);
                   }}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white hover:text-dotpic-gold hover:border-dotpic-gold transition-colors"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white hover:text-teal-400 hover:border-teal-400 transition-colors"
                   title="View Event QR Banner"
                 >
                   <QrCode className="w-3.5 h-3.5" />
                 </button>
 
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] text-dotpic-muted font-mono">
-                  <span className="flex items-center gap-1.5 text-white/90">
-                    <Calendar className="w-3 h-3 text-dotpic-gold" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] font-orbitron">
+                  <span className="flex items-center gap-1.5 text-slate-200">
+                    <Calendar className="w-3 h-3 text-teal-400" />
                     {formatDate(event.event_date)}
                   </span>
-                  <span className="flex items-center gap-1.5 text-dotpic-gold font-bold">
-                    <Users className="w-3 h-3 text-dotpic-gold" />
+                  <span className="flex items-center gap-1.5 text-teal-300 font-bold">
+                    <Users className="w-3 h-3 text-teal-400" />
                     {event.photo_count}+ Photos
                   </span>
                 </div>
@@ -85,21 +85,21 @@ export function CampusStoriesPreview() {
               {/* Event Details */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] uppercase tracking-widest text-dotpic-gold font-mono block mb-1">
+                  <span className="text-[10px] uppercase tracking-widest text-teal-600 dark:text-teal-400 font-orbitron block mb-1">
                     {event.category}
                   </span>
-                  <h3 className="text-xl font-serif text-dotpic-white group-hover:text-dotpic-gold transition-colors duration-300 mb-2">
+                  <h3 className="text-xl font-serif text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300 mb-2">
                     {event.title}
                   </h3>
-                  <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed mb-6 font-light">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-6 font-sans">
                     {event.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-dotpic-border/60 flex items-center justify-between">
+                <div className="pt-4 border-t border-[#E8E2D6] dark:border-slate-800 flex items-center justify-between">
                   <Link
                     to={`/campus-stories/${event.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-dotpic-white group-hover:text-dotpic-gold font-medium transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs uppercase font-orbitron tracking-wider text-slate-800 dark:text-slate-200 group-hover:text-teal-600 dark:group-hover:text-teal-400 font-semibold transition-colors"
                   >
                     <span>View Event Gallery</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -107,7 +107,7 @@ export function CampusStoriesPreview() {
 
                   <Link
                     to={`/book?category=Campus+Stories&college=${encodeURIComponent(event.college_name)}`}
-                    className="text-xs text-dotpic-gold hover:text-white font-mono uppercase tracking-wider font-semibold"
+                    className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-orbitron uppercase tracking-wider font-semibold"
                   >
                     Book Fest →
                   </Link>
@@ -121,7 +121,7 @@ export function CampusStoriesPreview() {
         <div className="mt-14 text-center">
           <Link
             to="/campus-stories"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-dotpic-gold hover:text-white font-semibold border-b border-dotpic-gold/40 pb-1.5 transition-colors"
+            className="inline-flex items-center gap-2 text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-semibold border-b-2 border-teal-500/50 pb-1.5 transition-colors"
           >
             <span>Explore All 45+ College Festival Archives</span>
             <ArrowUpRight className="w-4 h-4" />

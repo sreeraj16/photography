@@ -5,7 +5,7 @@ export function Card({ className, children, ...props }: React.HTMLAttributes<HTM
   return (
     <div
       className={cn(
-        "bg-dotpic-charcoal/80 border border-dotpic-border/80 backdrop-blur-sm rounded-sm transition-all duration-300 hover:border-dotpic-gold/30",
+        "bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 rounded-2xl transition-all duration-300 hover:border-teal-500/40 shadow-sm",
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
       <input
         ref={ref}
         className={cn(
-          "w-full bg-dotpic-surface/90 border border-dotpic-border px-4 py-3 rounded-sm text-sm text-dotpic-white placeholder:text-dotpic-muted/50 focus:outline-none focus:border-dotpic-gold focus:ring-1 focus:ring-dotpic-gold transition-colors duration-200",
+          "w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-4 py-3 rounded-xl text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-200",
           className
         )}
         {...props}
@@ -37,7 +37,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTML
       <textarea
         ref={ref}
         className={cn(
-          "w-full bg-dotpic-surface/90 border border-dotpic-border px-4 py-3 rounded-sm text-sm text-dotpic-white placeholder:text-dotpic-muted/50 focus:outline-none focus:border-dotpic-gold focus:ring-1 focus:ring-dotpic-gold transition-colors duration-200 resize-y",
+          "w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-4 py-3 rounded-xl text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-200 resize-y",
           className
         )}
         {...props}
@@ -53,7 +53,7 @@ export const Select = React.forwardRef<HTMLSelectElement, React.SelectHTMLAttrib
       <select
         ref={ref}
         className={cn(
-          "w-full bg-dotpic-surface/90 border border-dotpic-border px-4 py-3 rounded-sm text-sm text-dotpic-white focus:outline-none focus:border-dotpic-gold focus:ring-1 focus:ring-dotpic-gold transition-colors duration-200 appearance-none cursor-pointer",
+          "w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-4 py-3 rounded-xl text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-200",
           className
         )}
         {...props}

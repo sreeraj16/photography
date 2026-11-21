@@ -21,7 +21,6 @@ export function BeforeAfterSlider({
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
 
-  // Synchronize container width on mount and on any window/orientation resize
   useEffect(() => {
     if (!containerRef.current) return;
     const updateWidth = () => {
@@ -74,9 +73,9 @@ export function BeforeAfterSlider({
       }}
       onTouchMove={handleTouchMove}
       data-cursor="drag"
-      className={`relative overflow-hidden select-none cursor-ew-resize rounded-sm border border-dotpic-border group ${className}`}
+      className={`relative overflow-hidden select-none cursor-ew-resize rounded-3xl border border-[#E2DCD0] dark:border-slate-800 shadow-xl group ${className}`}
     >
-      {/* After (Graded) Image (Base full width background) */}
+      {/* After (Graded) Image */}
       <img
         src={afterImage}
         alt="DOTPIC Color Retouch Graded"
@@ -98,29 +97,29 @@ export function BeforeAfterSlider({
         />
 
         {/* Label Before */}
-        <span className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-white/20 text-dotpic-muted px-3 py-1 text-[10px] uppercase tracking-widest font-mono rounded-sm shadow-md">
+        <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/20 text-slate-300 px-3 py-1 text-[10px] uppercase tracking-widest font-orbitron rounded-full shadow-md">
           {beforeLabel}
         </span>
       </div>
 
       {/* Label After */}
-      <span className="absolute top-4 right-4 bg-black/85 backdrop-blur-md border border-dotpic-gold/50 text-dotpic-gold px-3 py-1 text-[10px] uppercase tracking-widest font-mono rounded-sm shadow-md">
+      <span className="absolute top-4 right-4 bg-black/80 backdrop-blur-md border border-teal-500/50 text-teal-300 px-3 py-1 text-[10px] uppercase tracking-widest font-orbitron rounded-full shadow-md">
         {afterLabel}
       </span>
 
-      {/* Hint banner at the bottom */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/10 opacity-70 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 text-[10px] font-mono text-white/80 tracking-wider">
-        <ChevronsLeftRight className="w-3.5 h-3.5 text-dotpic-gold" />
+      {/* Hint banner */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-teal-500/30 opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 text-[10px] font-orbitron text-teal-200 tracking-wider">
+        <ChevronsLeftRight className="w-3.5 h-3.5 text-teal-400" />
         <span>DRAG TO REVEAL RETOUCH</span>
       </div>
 
-      {/* Gold Divider Line & Drag Handle */}
+      {/* Teal Divider Line & Drag Handle */}
       <div
-        className="absolute top-0 bottom-0 z-20 w-[2px] bg-gradient-to-b from-dotpic-gold via-white to-dotpic-gold shadow-[0_0_10px_rgba(201,169,110,0.8)]"
+        className="absolute top-0 bottom-0 z-20 w-[2px] bg-gradient-to-b from-teal-500 via-white to-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.8)]"
         style={{ left: `${sliderPos}%` }}
       >
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-dotpic-black border-2 border-dotpic-gold flex items-center justify-center shadow-[0_0_20px_rgba(201,169,110,0.7)] group-hover:scale-110 transition-transform">
-          <ChevronsLeftRight className="w-4 h-4 text-dotpic-gold" />
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-slate-950 border-2 border-teal-400 flex items-center justify-center shadow-[0_0_20px_rgba(20,184,166,0.7)] group-hover:scale-110 transition-transform">
+          <ChevronsLeftRight className="w-4 h-4 text-teal-400" />
         </div>
       </div>
     </div>

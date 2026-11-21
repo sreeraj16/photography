@@ -19,7 +19,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     withShutterSound = false,
     icon,
     children, 
-    onClick,
+    onClick, 
     ...props 
   }, ref) => {
     const { playShutterSound } = useAudio();
@@ -31,22 +31,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       if (onClick) onClick(e);
     };
 
-    const baseStyles = "relative inline-flex items-center justify-center font-sans uppercase transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-dotpic-gold disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden select-none active:scale-[0.98]";
+    const baseStyles = "relative inline-flex items-center justify-center font-orbitron uppercase tracking-widest transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden select-none active:scale-[0.97]";
 
     const variants = {
-      primary: "bg-gradient-to-r from-[#C9A96E] via-[#DFBF85] to-[#B89255] text-dotpic-black font-bold tracking-[0.18em] shadow-[0_4px_20px_rgba(201,169,110,0.3)] hover:shadow-[0_6px_30px_rgba(201,169,110,0.5)] hover:-translate-y-0.5",
-      gold: "bg-gradient-to-r from-[#C9A96E] via-[#E8D1A7] to-[#C9A96E] text-dotpic-black font-bold tracking-[0.2em] shadow-[0_4px_25px_rgba(201,169,110,0.35)] hover:shadow-[0_8px_35px_rgba(201,169,110,0.6)] hover:-translate-y-0.5 border border-white/30",
-      secondary: "bg-dotpic-surface/90 text-dotpic-white hover:text-dotpic-gold hover:bg-dotpic-surface border border-dotpic-border hover:border-dotpic-gold/50 backdrop-blur-md tracking-[0.15em] font-medium shadow-md",
-      outline: "bg-black/40 text-dotpic-white border border-dotpic-gold/50 hover:border-dotpic-gold hover:text-dotpic-gold hover:bg-dotpic-gold/10 backdrop-blur-md tracking-[0.18em] font-medium shadow-[0_2px_15px_rgba(0,0,0,0.6)]",
-      cinema: "bg-black/70 text-dotpic-gold border border-dotpic-gold/40 hover:border-dotpic-gold hover:bg-dotpic-black text-white hover:shadow-[0_0_25px_rgba(201,169,110,0.3)] tracking-[0.2em] font-mono text-xs",
-      ghost: "bg-transparent text-dotpic-muted hover:text-dotpic-white hover:bg-white/5 tracking-[0.15em] font-medium",
+      primary: "bg-gradient-to-r from-teal-600 via-teal-500 to-teal-700 hover:from-teal-500 hover:via-teal-400 hover:to-teal-600 text-white font-semibold shadow-[0_4px_20px_rgba(13,148,136,0.35)] hover:shadow-[0_8px_30px_rgba(20,184,166,0.55)] border border-teal-300/30 hover:-translate-y-0.5",
+      gold: "bg-gradient-to-r from-teal-500 via-teal-400 to-teal-600 hover:from-teal-400 hover:via-teal-300 hover:to-teal-500 text-white font-semibold shadow-[0_4px_25px_rgba(20,184,166,0.45)] hover:shadow-[0_8px_35px_rgba(20,184,166,0.65)] border border-white/40 hover:-translate-y-0.5",
+      secondary: "bg-white dark:bg-slate-900/90 text-slate-800 dark:text-slate-100 border border-slate-300 dark:border-slate-800 hover:border-teal-500/60 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50/50 dark:hover:bg-slate-800/90 backdrop-blur-md shadow-sm font-medium",
+      outline: "bg-transparent text-teal-700 dark:text-teal-300 border-2 border-teal-600/70 dark:border-teal-400/70 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 dark:hover:text-slate-950 font-semibold shadow-[0_2px_15px_rgba(13,148,136,0.15)]",
+      cinema: "bg-slate-950/80 text-teal-300 border border-teal-500/40 hover:border-teal-400 hover:bg-slate-900 text-xs shadow-[0_0_20px_rgba(20,184,166,0.25)]",
+      ghost: "bg-transparent text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-500/10 font-medium",
     };
 
     const sizes = {
-      sm: "text-[11px] px-3.5 py-2 rounded-full gap-1.5",
+      sm: "text-[10px] px-4 py-2 rounded-full gap-1.5",
       md: "text-xs px-5 py-2.5 rounded-full gap-2",
-      lg: "text-xs sm:text-sm px-7 py-3.5 rounded-full gap-2.5 font-semibold",
-      xl: "text-sm sm:text-base px-8 sm:px-10 py-4 rounded-full gap-3 font-bold",
+      lg: "text-xs sm:text-sm px-7 py-3 rounded-full gap-2.5 font-semibold",
+      xl: "text-sm sm:text-base px-8 sm:px-10 py-3.5 rounded-full gap-3 font-bold",
     };
 
     return (
@@ -58,28 +58,20 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {/* Animated Light Sweep Sheen */}
-        <span 
-          aria-hidden="true"
-          className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 ease-out pointer-events-none"
-        />
+        <span className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden rounded-full">
+          <span className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-[200%] transition-transform duration-700 ease-out group-hover:translate-x-[350%]" />
+        </span>
 
         {isLoading ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Processing...
-          </span>
+          <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
         ) : (
-          <>
-            {icon && <span className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">{icon}</span>}
-            <span className="relative z-10">{children}</span>
-          </>
+          icon && <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">{icon}</span>
         )}
+
+        <span className="relative z-10">{children}</span>
       </button>
     );
   }
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
