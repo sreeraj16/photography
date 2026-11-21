@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" fill="none">
+  <!-- Focal Ring / Aperture Dot -->
+  <g transform="translate(10, 8)">
+    <circle cx="28" cy="28" r="22" stroke="#C9A96E" stroke-width="2" stroke-opacity="0.9" fill="#0A0A0A" />
+    <circle cx="28" cy="28" r="14" stroke="#F5F3EE" stroke-width="1.5" stroke-dasharray="3 3" />
+    <circle cx="28" cy="28" r="6" fill="#C9A96E" />
+    <!-- Golden crosshair markers -->
+    <line x1="28" y1="2" x2="28" y2="8" stroke="#C9A96E" stroke-width="1.5" />
+    <line x1="28" y1="48" x2="28" y2="54" stroke="#C9A96E" stroke-width="1.5" />
+    <line x1="2" y1="28" x2="8" y2="28" stroke="#C9A96E" stroke-width="1.5" />
+    <line x1="48" y1="28" x2="54" y2="28" stroke="#C9A96E" stroke-width="1.5" />
+  </g>
+
+  <!-- Typography: DOTPIC -->
+  <text x="75" y="44" font-family="'Inter', 'Manrope', -apple-system, sans-serif" font-weight="900" font-size="34" letter-spacing="4" fill="#F5F3EE">
+    DOT<tspan fill="#C9A96E">PIC</tspan>
+  </text>
+
+  <!-- Subtitle: PHOTOGRAPHY -->
+  <text x="76" y="62" font-family="'Inter', -apple-system, sans-serif" font-weight="500" font-size="9.5" letter-spacing="7" fill="#A8A39A">
+    PHOTOGRAPHY
+  </text>
+  
+  <!-- Subtle gold hairline badge border -->
+  <line x1="75" y1="67" x2="245" y2="67" stroke="#C9A96E" stroke-width="0.8" stroke-opacity="0.6" />
+</svg>

@@ -1,0 +1,160 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { QrCode, Calendar, Users, ArrowUpRight, Sparkles } from 'lucide-react';
+import { dataStore } from '../lib/dataStore';
+import { formatDate } from '../lib/utils';
+import { QRCodeModal } from '../features/campus/QRCodeModal';
+import { CampusEvent } from '../types/database.types';
+
+export function CampusStoriesPage() {
+  const events = dataStore.getCampusEvents();
+  const [selectedCollege, setSelectedCollege] = useState<string>('all');
+  const [activeQrEvent, setActiveQrEvent] = useState<CampusEvent | null>(null);
+
+  const colleges = Array.from(new Set(events.map(e => e.college_name)));
+
+  const filtered = selectedCollege === 'all'
+    ? events
+    : events.filter(e => e.college_name === selectedCollege);
+
+  return (
+    <div className="pt-24 pb-20 bg-dotpic-black text-dotpic-white min-h-screen">
+      {/* Hero Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[10px] font-mono tracking-widest uppercase mb-4">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>MAJOR BRAND PILLAR</span>
+        </div>
+
+        <h1 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight max-w-3xl mx-auto mb-4">
+          Campus Stories & Festivals
+        </h1>
+        <p className="text-xs sm:text-sm text-dotpic-muted max-w-xl mx-auto leading-relaxed">
+          High-energy coverage of South India's premier technical fests, concerts, hackathons, and collegiate milestones. Scan instant QR banners to find your memories.
+        </p>
+
+        <div className="mt-8 flex justify-center gap-4">
+          <Link
+            to="/campus-stories/colleges"
+            className="px-5 py-2.5 rounded-sm bg-dotpic-surface border border-dotpic-gold/40 text-dotpic-gold hover:bg-dotpic-gold hover:text-dotpic-black text-xs uppercase tracking-wider font-semibold transition-all"
+          >
+            Partner Colleges Roster →
+          </Link>
+
+          <Link
+            to="/find-my-photos"
+            className="px-5 py-2.5 rounded-sm bg-dotpic-surface border border-dotpic-border text-dotpic-white hover:border-dotpic-gold text-xs uppercase tracking-wider font-medium transition-colors"
+          >
+            Find My Photos (Selfie Match)
+          </Link>
+        </div>
+      </div>
+
+      {/* College Filter Pills */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 pb-6 border-b border-dotpic-border">
+          <button
+            onClick={() => setSelectedCollege('all')}
+            className={`px-4 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+              selectedCollege === 'all'
+                ? 'bg-dotpic-gold text-dotpic-black font-semibold'
+                : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+            }`}
+          >
+            All Campus Fests
+          </button>
+          {colleges.map((c) => (
+            <button
+              key={c}
+              onClick={() => setSelectedCollege(c)}
+              className={`px-4 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+                selectedCollege === c
+                  ? 'bg-dotpic-gold text-dotpic-black font-semibold'
+                  : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Events Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filtered.map((event) => (
+            <div
+              key={event.id}
+              className="group bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden flex flex-col justify-between hover:border-dotpic-gold/50 transition-all duration-300 shadow-xl"
+            >
+              <div>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={event.cover_image_url}
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <span className="absolute top-3 left-3 bg-black/80 text-dotpic-gold border border-dotpic-gold/40 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase">
+                    {event.college_name}
+                  </span>
+
+                  <button
+                    onClick={() => setActiveQrEvent(event)}
+                    className="absolute top-3 right-3 p-2 rounded bg-black/80 text-white hover:text-dotpic-gold border border-white/20 transition-colors"
+                    title="View & Download Event QR Code"
+                  >
+                    <QrCode className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="p-6">
+                  <div className="flex items-center justify-between text-[11px] text-dotpic-gold font-mono mb-2">
+                    <span>{formatDate(event.event_date)}</span>
+                    <span>{event.photo_count}+ Photos</span>
+                  </div>
+
+                  <h3 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-2">
+                    {event.title}
+                  </h3>
+
+                  <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed mb-6">
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 bg-dotpic-surface/60 border-t border-dotpic-border flex items-center justify-between">
+                <Link
+                  to={`/campus-stories/${event.slug}`}
+                  className="text-xs uppercase tracking-wider text-dotpic-white group-hover:text-dotpic-gold font-medium flex items-center gap-1"
+                >
+                  <span>Open Event Photos</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+
+                <button
+                  onClick={() => setActiveQrEvent(event)}
+                  className="text-[11px] text-dotpic-gold hover:underline flex items-center gap-1 font-mono"
+                >
+                  <QrCode className="w-3 h-3" /> Get QR
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* QR Modal */}
+      {activeQrEvent && (
+        <QRCodeModal
+          eventTitle={activeQrEvent.title}
+          collegeName={activeQrEvent.college_name}
+          eventUrl={`${window.location.origin}/campus-stories/${activeQrEvent.slug}`}
+          isOpen={true}
+          onClose={() => setActiveQrEvent(null)}
+        />
+      )}
+    </div>
+  );
+}
