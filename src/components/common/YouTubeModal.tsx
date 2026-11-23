@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Film } from 'lucide-react';
 
 interface YouTubeModalProps {
-  videoId: string;
+  videoId?: string;
+  directVideoUrl?: string;
   isOpen: boolean;
   onClose: () => void;
   title?: string;
 }
 
-export function YouTubeModal({ videoId, isOpen, onClose, title = "DOTPIC Showreel" }: YouTubeModalProps) {
+export function YouTubeModal({ videoId = "", directVideoUrl = "", isOpen, onClose, title = "DOTPIC Cinema Showreel" }: YouTubeModalProps) {
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -20,12 +21,26 @@ export function YouTubeModal({ videoId, isOpen, onClose, title = "DOTPIC Showree
 
   if (!isOpen) return null;
 
+  // Determine if this is a direct uploaded/file video
+  const isDirectVideo = Boolean(
+    directVideoUrl ||
+    videoId.startsWith('data:video') ||
+    videoId.startsWith('blob:') ||
+    videoId.includes('.mp4') ||
+    videoId.includes('.webm') ||
+    videoId.includes('.mov')
+  );
+
+  const directSource = directVideoUrl || videoId;
+
   // Clean video ID if URL was passed
   let cleanId = videoId;
-  if (videoId.includes('v=')) {
-    cleanId = videoId.split('v=')[1].split('&')[0];
-  } else if (videoId.includes('youtu.be/')) {
-    cleanId = videoId.split('youtu.be/')[1].split('?')[0];
+  if (!isDirectVideo) {
+    if (videoId.includes('v=')) {
+      cleanId = videoId.split('v=')[1].split('&')[0];
+    } else if (videoId.includes('youtu.be/')) {
+      cleanId = videoId.split('youtu.be/')[1].split('?')[0];
+    }
   }
 
   return (
@@ -34,45 +49,59 @@ export function YouTubeModal({ videoId, isOpen, onClose, title = "DOTPIC Showree
       aria-modal="true"
       className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-6 backdrop-blur-xl animate-in fade-in duration-300"
     >
-      <div className="relative w-full max-w-5xl bg-dotpic-charcoal border border-dotpic-gold/40 rounded-sm overflow-hidden shadow-2xl">
+      <div className="relative w-full max-w-5xl bg-slate-950 border border-teal-500/40 rounded-2xl overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-dotpic-border bg-dotpic-black/80">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-black/90">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <h3 className="text-sm font-serif tracking-wider text-dotpic-white font-medium uppercase truncate">
-              {title}
-            </h3>
+            <span className="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse" />
+            <div className="flex items-center gap-2">
+              <Film className="w-4 h-4 text-teal-400" />
+              <h3 className="text-sm font-orbitron tracking-wider text-white font-medium uppercase truncate">
+                {title}
+              </h3>
+            </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full border border-white/10 text-dotpic-muted hover:text-white hover:border-dotpic-gold transition-colors"
+            className="p-1.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-teal-400 transition-colors"
             aria-label="Close video modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* 16:9 or Cinema Letterbox Video Player Frame */}
-        <div className="relative aspect-video w-full bg-black">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${cleanId}?autoplay=1&rel=0&modestbranding=1`}
-            title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full border-0"
-          />
+        {/* 16:9 Cinema Player Frame (Direct Video or YouTube) */}
+        <div className="relative aspect-video w-full bg-black flex items-center justify-center">
+          {isDirectVideo ? (
+            <video
+              src={directSource}
+              controls
+              autoPlay
+              className="w-full h-full object-contain"
+            >
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${cleanId}?autoplay=1&rel=0&modestbranding=1`}
+              title={title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          )}
         </div>
 
         {/* Cinematic Subtitle Bar */}
-        <div className="px-6 py-3 bg-dotpic-black/90 border-t border-dotpic-border flex items-center justify-between text-xs text-dotpic-muted">
-          <span>DOTPIC FILMS • Directed by DOTPIC Creative Studio</span>
+        <div className="px-6 py-3 bg-black/95 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-orbitron">
+          <span>DOTPIC CINEMA // HYDERABAD ARCHIVES</span>
           <a
             href="https://www.youtube.com/@dotpicphotography"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dotpic-gold hover:underline font-medium"
+            className="text-teal-400 hover:text-teal-300 hover:underline font-semibold"
           >
-            Subscribe on YouTube @dotpicphotography →
+            Official Channel: @dotpicphotography →
           </a>
         </div>
       </div>

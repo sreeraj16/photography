@@ -83,10 +83,10 @@ export function FilmsPage() {
               maxTilt={6}
               scale={1.03}
               data-cursor="play"
-              onClick={() => setActiveVideo({ id: vid.youtube_id, title: vid.title })}
-              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 cursor-pointer hover:border-red-500/60 transition-all duration-300 shadow-2xl group"
+              onClick={() => setActiveVideo({ id: vid.video_file_url || vid.youtube_id || vid.youtube_url, title: vid.title })}
+              className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 cursor-pointer hover:border-teal-500/60 transition-all duration-300 shadow-xl group"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-video overflow-hidden bg-black">
                 <img
                   src={vid.thumbnail_url}
                   alt={vid.title}
@@ -95,20 +95,20 @@ export function FilmsPage() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
 
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center group-hover:scale-110 shadow-2xl transition-transform">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-teal-600 text-white flex items-center justify-center group-hover:scale-110 shadow-2xl transition-transform">
                   <Play className="w-6 h-6 fill-white ml-0.5" />
                 </div>
 
-                <span className="absolute bottom-3 left-3 bg-black/80 text-white px-3 py-1 rounded-full text-[10px] font-mono border border-white/20 uppercase backdrop-blur-md">
+                <span className="absolute bottom-3 left-3 bg-black/80 text-white px-3 py-1 rounded-full text-[10px] font-orbitron border border-white/20 uppercase backdrop-blur-md">
                   {vid.category}
                 </span>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-2">
+                <h3 className="text-xl font-serif text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2">
                   {vid.title}
                 </h3>
-                <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed font-light">
+                <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed font-sans">
                   {vid.description}
                 </p>
               </div>
@@ -120,6 +120,7 @@ export function FilmsPage() {
       {activeVideo && (
         <YouTubeModal
           videoId={activeVideo.id}
+          directVideoUrl={activeVideo.id}
           title={activeVideo.title}
           isOpen={true}
           onClose={() => setActiveVideo(null)}

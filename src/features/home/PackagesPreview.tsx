@@ -61,12 +61,14 @@ export function PackagesPreview() {
                   {pkg.description}
                 </p>
 
-                {/* Price */}
+                {/* Price / Custom Quotation */}
                 <div className="mb-6 pb-6 border-b border-[#E8E2D6] dark:border-slate-800">
-                  <span className="text-3xl sm:text-4xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">
-                    {formatINR(pkg.price_inr)}
+                  <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">
+                    {pkg.price_inr > 0 ? formatINR(pkg.price_inr) : "Custom Quote"}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2 font-sans">/ assignment</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2 font-sans">
+                    {pkg.price_inr > 0 ? "/ assignment" : "/ tailored on request"}
+                  </span>
                 </div>
 
                 {/* Inclusions List */}

@@ -2,26 +2,16 @@ import { useState, useEffect, useRef } from 'react';
 
 export type CursorVariant = 'default' | 'hover' | 'view' | 'drag' | 'play' | 'zoom' | 'explore' | 'hidden';
 
-export interface ClickRipple {
-  id: number;
-  x: number;
-  y: number;
-}
-
 export function useCustomCursor() {
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [ringPos, setRingPos] = useState({ x: -100, y: -100 });
   const [cursorVariant, setCursorVariant] = useState<CursorVariant>('default');
   const [isMouseDown, setIsMouseDown] = useState(false);
-  const [speed, setSpeed] = useState(0);
-  const [angle, setAngle] = useState(0);
-  const [ripples, setRipples] = useState<ClickRipple[]>([]);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const targetPos = useRef({ x: -100, y: -100 });
-  const prevTargetPos = useRef({ x: -100, y: -100 });
   const currentRingPos = useRef({ x: -100, y: -100 });
   const animFrameId = useRef<number | null>(null);
 
@@ -38,26 +28,13 @@ export function useCustomCursor() {
     const motionHandler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     motionQuery.addEventListener('change', motionHandler);
 
-    // Smooth RAF animation loop for ring lerp with velocity and direction
+    // Smooth lerp animation loop for outer ring
     const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
 
     const render = () => {
-      currentRingPos.current.x = lerp(currentRingPos.current.x, targetPos.current.x, 0.22);
-      currentRingPos.current.y = lerp(currentRingPos.current.y, targetPos.current.y, 0.22);
+      currentRingPos.current.x = lerp(currentRingPos.current.x, targetPos.current.x, 0.28);
+      currentRingPos.current.y = lerp(currentRingPos.current.y, targetPos.current.y, 0.28);
       setRingPos({ x: currentRingPos.current.x, y: currentRingPos.current.y });
-
-      // Calculate instantaneous velocity for dynamic stretch
-      const vx = targetPos.current.x - prevTargetPos.current.x;
-      const vy = targetPos.current.y - prevTargetPos.current.y;
-      const currentSpeed = Math.min(Math.sqrt(vx * vx + vy * vy), 40);
-      setSpeed((prev) => lerp(prev, currentSpeed, 0.2));
-
-      if (currentSpeed > 1) {
-        const rad = Math.atan2(vy, vx) * (180 / Math.PI);
-        setAngle(rad);
-      }
-
-      prevTargetPos.current = { ...targetPos.current };
       animFrameId.current = requestAnimationFrame(render);
     };
 
@@ -82,17 +59,8 @@ export function useCustomCursor() {
       }
     };
 
-    const onMouseDown = (e: MouseEvent) => {
+    const onMouseDown = () => {
       setIsMouseDown(true);
-      const newRipple: ClickRipple = {
-        id: Date.now() + Math.random(),
-        x: e.clientX,
-        y: e.clientY,
-      };
-      setRipples((prev) => [...prev.slice(-4), newRipple]);
-      setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-      }, 700);
     };
 
     const onMouseUp = () => {
@@ -132,9 +100,6 @@ export function useCustomCursor() {
     ringPos,
     cursorVariant,
     isMouseDown,
-    speed,
-    angle,
-    ripples,
     shouldRenderCustomCursor,
   };
 }

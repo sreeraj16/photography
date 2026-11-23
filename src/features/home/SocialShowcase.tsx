@@ -53,7 +53,7 @@ export function SocialShowcase() {
             <div className="relative rounded-3xl overflow-hidden border border-[#E2DCD0] dark:border-slate-800 bg-slate-950 shadow-xl dark:shadow-2xl mb-8 group">
               {/* Main Featured Player Frame */}
               <div
-                onClick={() => setActiveModalVideo({ id: featuredVideo.youtube_id, title: featuredVideo.title })}
+                onClick={() => setActiveModalVideo({ id: featuredVideo.video_file_url || featuredVideo.youtube_id || featuredVideo.youtube_url, title: featuredVideo.title })}
                 className="relative aspect-video w-full overflow-hidden cursor-pointer group"
                 data-cursor="play"
               >
@@ -211,6 +211,7 @@ export function SocialShowcase() {
       {activeModalVideo && (
         <YouTubeModal
           videoId={activeModalVideo.id}
+          directVideoUrl={activeModalVideo.id}
           title={activeModalVideo.title}
           isOpen={true}
           onClose={() => setActiveModalVideo(null)}

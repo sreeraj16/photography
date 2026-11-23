@@ -242,6 +242,10 @@ export interface ClientGalleryPhoto {
 export interface VideoHubItem {
   id: string;
   title: string;
+  video_type?: 'upload' | 'youtube';
+  video_file_url?: string;
+  file_name?: string;
+  file_size?: string;
   youtube_url: string;
   youtube_id: string;
   thumbnail_url: string;

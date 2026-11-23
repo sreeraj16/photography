@@ -1,15 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X, Sparkles, ArrowRight } from 'lucide-react';
 import { dataStore } from '../lib/dataStore';
 import { formatINR } from '../lib/utils';
-import { EstimateCalculator } from '../features/booking/EstimateCalculator';
 import { Button } from '../components/ui/Button';
 import { TiltCard } from '../components/ui/TiltCard';
 
 export function PackagesPage() {
   const packages = dataStore.getPackages().filter(p => p.is_enabled);
-  const [showCalculator, setShowCalculator] = useState(false);
 
   // Comparison matrix features
   const matrixFeatures = [
@@ -33,26 +30,21 @@ export function PackagesPage() {
           Investment & Photography Packages
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-          Transparent rates in Indian Rupees (₹). Every package includes high-resolution raw master files, hand-color-graded albums, and cloud delivery.
+          Bespoke photography and cinematography tailored to your wedding, campus festival, or commercial campaign. Contact us directly on WhatsApp or Instagram for availability and customized quotations.
         </p>
 
-        <div className="mt-8 flex justify-center gap-4">
-          <Button
-            variant={showCalculator ? 'primary' : 'outline'}
-            size="sm"
-            onClick={() => setShowCalculator(!showCalculator)}
-          >
-            {showCalculator ? 'Hide Estimate Calculator' : 'Open Instant Estimate Calculator'}
-          </Button>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link to="/book">
+            <Button
+              variant="primary"
+              size="md"
+              withShutterSound
+            >
+              Enquire on WhatsApp / Instagram
+            </Button>
+          </Link>
         </div>
       </div>
-
-      {/* Optional Interactive Estimator Drawer */}
-      {showCalculator && (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 animate-in fade-in duration-300">
-          <EstimateCalculator />
-        </div>
-      )}
 
       {/* Packages Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
@@ -83,10 +75,12 @@ export function PackagesPage() {
                 <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-sans">{pkg.description}</p>
 
                 <div className="mb-6 pb-6 border-b border-[#E8E2D6] dark:border-slate-800">
-                  <span className="text-3xl sm:text-4xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">
-                    {formatINR(pkg.price_inr)}
+                  <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">
+                    {pkg.price_inr > 0 ? formatINR(pkg.price_inr) : "Custom Quote"}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2 font-sans">/ complete assignment</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2 font-sans">
+                    {pkg.price_inr > 0 ? "/ assignment" : "/ tailored on request"}
+                  </span>
                 </div>
 
                 <ul className="space-y-3.5 mb-8 text-xs text-slate-700 dark:text-slate-300 font-sans">

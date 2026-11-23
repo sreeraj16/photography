@@ -17,7 +17,7 @@ export function HeroSection({
   headline = "CAPTURING MOMENTS. CREATING MEMORIES.",
   subheadline = "Every Frame Tells a Story. Every Moment Becomes Timeless.",
   mediaUrl = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop",
-  showreelUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  showreelUrl = "https://www.youtube.com/@dotpicphotography"
 }: HeroSectionProps) {
   const [showModal, setShowModal] = useState(false);
   const { t } = useI18n();

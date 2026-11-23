@@ -20,7 +20,7 @@ import {
 } from '../types/database.types';
 import { supabase, isSupabaseConfigured } from './supabase';
 
-const STORAGE_KEY_PREFIX = 'dotpic_data_v4_';
+const STORAGE_KEY_PREFIX = 'dotpic_data_v5_';
 
 // Initial Seed Data
 const initialCategories: Category[] = [
@@ -390,7 +390,7 @@ const initialCampusEvents: CampusEvent[] = [
     description: "South India's premier techno-cultural festival. 3 days of EDM concert madness, national rock bands, celebrity pro-nites, robotics battles, and 18,000 passionate students.",
     cover_image_url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop",
     photo_count: 640,
-    video_highlight_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    video_highlight_url: "https://www.youtube.com/@dotpicphotography",
     is_featured: true,
     download_policy: "full",
     allow_find_my_photos: true,
@@ -410,7 +410,7 @@ const initialCampusEvents: CampusEvent[] = [
     description: "Spectacular lighting, Bollywood star night, international choreo competitions, and electrifying campus vibes across BITS Hyderabad's amphitheatre.",
     cover_image_url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
     photo_count: 520,
-    video_highlight_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    video_highlight_url: "https://www.youtube.com/@dotpicphotography",
     is_featured: true,
     download_policy: "full",
     allow_find_my_photos: true,
@@ -465,7 +465,7 @@ const initialPackages: Package[] = [
     name: "Classic Storyteller",
     slug: "classic-storyteller",
     category_slug: "wedding",
-    price_inr: 45000,
+    price_inr: 0,
     duration: "1 Full Day (Up to 8 Hours)",
     description: "Essential cinematic coverage for intimate weddings, engagements, and temple ceremonies.",
     inclusions: [
@@ -486,7 +486,7 @@ const initialPackages: Package[] = [
     name: "Cinematic Grandeur",
     slug: "cinematic-grandeur",
     category_slug: "wedding",
-    price_inr: 95000,
+    price_inr: 0,
     duration: "2 Full Days (Full Festivities)",
     description: "Our signature luxury wedding package covering all rituals, ceremonies, and grand celebrations.",
     inclusions: [
@@ -508,7 +508,7 @@ const initialPackages: Package[] = [
     name: "Heritage Royal",
     slug: "heritage-royal",
     category_slug: "wedding",
-    price_inr: 165000,
+    price_inr: 0,
     duration: "3 Days (Pre-Wedding + Wedding + Reception)",
     description: "The ultimate bespoke experience for grand celebrations and multi-day destination weddings.",
     inclusions: [
@@ -530,7 +530,7 @@ const initialPackages: Package[] = [
     name: "Campus Fest Anthem",
     slug: "campus-fest-anthem",
     category_slug: "campus-stories",
-    price_inr: 35000,
+    price_inr: 0,
     duration: "1 Day Fest (Morning to Night)",
     description: "High-voltage coverage of cultural fests, star nights, and college technical summits.",
     inclusions: [
@@ -551,7 +551,7 @@ const initialPackages: Package[] = [
     name: "Editorial Portrait Session",
     slug: "editorial-portrait",
     category_slug: "portrait",
-    price_inr: 12000,
+    price_inr: 0,
     duration: "2-3 Hours Studio or Outdoor",
     description: "Bespoke personal branding, artist portraits and high-fashion modeling portfolios.",
     inclusions: [
@@ -610,49 +610,14 @@ const initialTestimonials: Testimonial[] = [
   }
 ];
 
-const initialEnquiries: Enquiry[] = [
-  {
-    id: "enq-1",
-    reference_id: "DP-2026-0042",
-    full_name: "Siddharth Rao",
-    phone_number: "+91 9876543210",
-    category: "Wedding",
-    preferred_date: "2026-12-10",
-    location: "Hyderabad",
-    package_id: "Cinematic Grandeur",
-    event_details: "3-day destination wedding with Sangeet at Taj Krishna and Pheras at Fort Grand.",
-    additional_requirements: "Require drone coverage and 2 handcrafted albums.",
-    source: "website",
-    status: "Confirmed",
-    admin_notes: "50% advance received. Crew roster confirmed.",
-    created_at: "2026-11-15T10:30:00Z",
-    updated_at: "2026-11-16T14:20:00Z"
-  },
-  {
-    id: "enq-2",
-    reference_id: "DP-2026-0043",
-    full_name: "Meera Varma",
-    phone_number: "+91 9123456789",
-    category: "Campus Stories",
-    preferred_date: "2026-12-28",
-    location: "Warangal",
-    package_id: "Campus Fest Anthem",
-    event_details: "NIT Warangal SpringSpree annual cultural festival coverage.",
-    additional_requirements: "Require QR codes for 10,000 students and instant reel videography.",
-    source: "website",
-    status: "Quoted",
-    admin_notes: "Sent proposal via WhatsApp. Awaiting student council sign-off.",
-    created_at: "2026-11-18T16:00:00Z",
-    updated_at: "2026-11-19T09:15:00Z"
-  }
-];
+const initialEnquiries: Enquiry[] = [];
 
 const initialVideos: VideoHubItem[] = [
   {
     id: "vid-1",
-    title: "DOTPIC 2026 Official Cinematic Showreel",
-    youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    youtube_id: "dQw4w9WgXcQ",
+    title: "DOTPIC Official Cinematic Showreel",
+    youtube_url: "https://www.youtube.com/@dotpicphotography",
+    youtube_id: "LXb3EKWsInQ",
     thumbnail_url: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=1200&auto=format&fit=crop",
     category: "Showreel",
     description: "Experience the visual poetry, emotion, and cinematic craftsmanship that define DOTPIC PHOTOGRAPHY.",
@@ -662,24 +627,24 @@ const initialVideos: VideoHubItem[] = [
   },
   {
     id: "vid-2",
-    title: "Ananya & Vikram: Royal Heritage Wedding Film",
-    youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    youtube_id: "dQw4w9WgXcQ",
+    title: "Royal Heritage Wedding Film Highlights",
+    youtube_url: "https://www.youtube.com/@dotpicphotography",
+    youtube_id: "LXb3EKWsInQ",
     thumbnail_url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop",
     category: "Weddings",
-    description: "A grand 3-day royal Nizami celebration captured in 4K anamorphic cinema at Taj Falaknuma Palace.",
+    description: "Grand royal wedding celebration captured in 4K anamorphic cinema.",
     is_featured: true,
     order_index: 2,
     created_at: new Date().toISOString()
   },
   {
     id: "vid-3",
-    title: "IIT Hyderabad Elan & Envision: Electric Aftermovie",
-    youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    youtube_id: "dQw4w9WgXcQ",
+    title: "Electric Campus Fest Aftermovie",
+    youtube_url: "https://www.youtube.com/@dotpicphotography",
+    youtube_id: "LXb3EKWsInQ",
     thumbnail_url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
     category: "Campus",
-    description: "Over 18,000 students celebrating art, music, lasers, and collegiate camaraderie.",
+    description: "Students celebrating art, music, stage lasers, and collegiate camaraderie.",
     is_featured: true,
     order_index: 3,
     created_at: new Date().toISOString()
@@ -860,53 +825,9 @@ In modern collegiate culture, memories move at the speed of social media. With D
   }
 ];
 
-const initialClientGalleries: ClientGallery[] = [
-  {
-    id: "cg-1",
-    client_name: "Vikram & Ananya",
-    title: "The Royal Falaknuma Wedding Collection",
-    slug: "vikram-ananya-wedding-private",
-    pin_hash: "1234", // Demo PIN: 1234
-    cover_image_url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
-    event_date: "2026-02-14",
-    expiry_date: "2027-02-14",
-    allow_downloads: true,
-    watermark_previews: false,
-    download_count: 24,
-    last_viewed_at: new Date().toISOString(),
-    created_at: new Date().toISOString()
-  }
-];
+const initialClientGalleries: ClientGallery[] = [];
 
-const initialClientPhotos: ClientGalleryPhoto[] = [
-  {
-    id: "cgp-1",
-    client_gallery_id: "cg-1",
-    url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
-    watermarked_url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
-    caption: "The Royal Entry",
-    order_index: 1,
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "cgp-2",
-    client_gallery_id: "cg-1",
-    url: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1600&auto=format&fit=crop",
-    watermarked_url: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1600&auto=format&fit=crop",
-    caption: "Bridal Portrait in Falaknuma",
-    order_index: 2,
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "cgp-3",
-    client_gallery_id: "cg-1",
-    url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1600&auto=format&fit=crop",
-    watermarked_url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1600&auto=format&fit=crop",
-    caption: "Palace Courtyard Vows",
-    order_index: 3,
-    created_at: new Date().toISOString()
-  }
-];
+const initialClientPhotos: ClientGalleryPhoto[] = [];
 
 const initialSettings: WebsiteSettings = {
   brand_name: "DOTPIC PHOTOGRAPHY",
@@ -933,7 +854,7 @@ const initialHomepage: HomepageContent = {
   hero_media_url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop",
   hero_media_type: "image",
   hero_poster_url: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop",
-  showreel_youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  showreel_youtube_url: "https://www.youtube.com/@dotpicphotography",
   cta_title: "LET'S CREATE SOMETHING TIMELESS.",
   cta_subtitle: "Book your shoot today or talk to our creative team directly on WhatsApp.",
   stats_events_shot: 280,
