@@ -11,7 +11,7 @@ export function BTSReels() {
       title: "Lighting Setup: Taj Falaknuma",
       desc: "Balancing 100-year-old chandeliers with delicate off-camera bounce.",
       duration: "0:45",
-      cover: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop",
+      cover: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop",
       instagramUrl: "https://www.instagram.com/_dotpic_"
     },
     {
@@ -19,7 +19,7 @@ export function BTSReels() {
       title: "Stage Crawl at IIT Hyderabad",
       desc: "Running with 70-200mm f/2.8 through 15,000 screaming concert fans.",
       duration: "0:58",
-      cover: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600&auto=format&fit=crop",
+      cover: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=600&auto=format&fit=crop",
       instagramUrl: "https://www.instagram.com/_dotpic_"
     },
     {
@@ -27,7 +27,7 @@ export function BTSReels() {
       title: "Araku Sunrise Drone Catch",
       desc: "Navigating morning valley thermals for that golden anamorphic sweep.",
       duration: "0:32",
-      cover: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop",
+      cover: "https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?q=80&w=600&auto=format&fit=crop",
       instagramUrl: "https://www.instagram.com/_dotpic_"
     },
     {
@@ -35,7 +35,7 @@ export function BTSReels() {
       title: "Color Grading in DaVinci",
       desc: "Custom film curve calibration for South Indian bridal silks.",
       duration: "1:15",
-      cover: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+      cover: "https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=600&auto=format&fit=crop",
       instagramUrl: "https://www.instagram.com/_dotpic_"
     }
   ];
@@ -53,10 +53,9 @@ export function BTSReels() {
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">08</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-wider uppercase">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>BEHIND THE SCENES</span>
-              </div>
+              <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
+                BEHIND THE SCENES
+              </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
               Reels & Moments

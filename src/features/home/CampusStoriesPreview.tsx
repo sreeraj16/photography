@@ -22,10 +22,9 @@ export function CampusStoriesPreview() {
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">04</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-wider uppercase">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{t('campusTag')}</span>
-              </div>
+              <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
+                {t('campusTag')}
+              </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
               {t('campusHeading')}

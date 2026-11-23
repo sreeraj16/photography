@@ -28,10 +28,9 @@ export function SocialShowcase() {
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">11</span>
                 <div className="h-[2px] w-12 bg-teal-500/50" />
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-[10px] font-orbitron tracking-wider uppercase">
-                  <Youtube className="w-3.5 h-3.5 text-red-600" />
-                  <span>{t('cinemaTag')}</span>
-                </div>
+                <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
+                  {t('cinemaTag')}
+                </span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
                 {t('cinemaHeading')}
@@ -139,12 +138,11 @@ export function SocialShowcase() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">10</span>
+                <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">12</span>
                 <div className="h-[2px] w-12 bg-teal-500/50" />
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-600 dark:text-pink-400 text-[10px] font-orbitron tracking-wider uppercase">
-                  <Instagram className="w-3.5 h-3.5" />
-                  <span>INSTAGRAM • @_dotpic_</span>
-                </div>
+                <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
+                  INSTAGRAM • @_dotpic_
+                </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-serif text-slate-900 dark:text-slate-100 font-light">
                 Follow The Frames:{' '}

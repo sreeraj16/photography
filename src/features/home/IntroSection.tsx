@@ -69,7 +69,7 @@ export function IntroSection() {
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop"
                   alt="DOTPIC Editorial Portrait"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"

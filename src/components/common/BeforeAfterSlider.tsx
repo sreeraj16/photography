@@ -79,7 +79,7 @@ export function BeforeAfterSlider({
       <img
         src={afterImage}
         alt="DOTPIC Color Retouch Graded"
-        className="w-full h-full object-cover block pointer-events-none"
+        className="w-full h-full object-cover block pointer-events-none filter contrast-[1.1] saturate-[1.15] brightness-[1.02]"
         loading="lazy"
       />
 
@@ -91,7 +91,7 @@ export function BeforeAfterSlider({
         <img
           src={beforeImage}
           alt="Raw Camera File Before"
-          className="absolute inset-0 h-full object-cover max-w-none grayscale brightness-90 contrast-90"
+          className="absolute inset-0 h-full object-cover max-w-none filter saturate-[0.55] contrast-[0.88] brightness-[1.06]"
           style={{ width: containerWidth ? `${containerWidth}px` : '100%' }}
           loading="lazy"
         />
