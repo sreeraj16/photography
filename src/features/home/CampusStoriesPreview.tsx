@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, QrCode, Calendar, Users, Sparkles } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 import { formatDate } from '../../lib/utils';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { QRCodeModal } from '../campus/QRCodeModal';
 import { CampusEvent } from '../../types/database.types';
 
 export function CampusStoriesPreview() {
+  const { t } = useI18n();
   const events = dataStore.getCampusEvents().slice(0, 3);
   const [activeQrEvent, setActiveQrEvent] = useState<CampusEvent | null>(null);
 
@@ -22,15 +24,15 @@ export function CampusStoriesPreview() {
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-[10px] font-orbitron tracking-wider uppercase">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>COLLEGE ARCHIVES</span>
+                <span>{t('campusTag')}</span>
               </div>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-              Campus Stories
+              {t('campusHeading')}
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md font-sans leading-relaxed">
-            South India's most trusted college fest photography team. Covering collegiate concerts, technical symposiums, and cultural milestones with instant QR access for students.
+            {t('campusDesc')}
           </p>
         </div>
 
@@ -123,7 +125,7 @@ export function CampusStoriesPreview() {
             to="/campus-stories"
             className="inline-flex items-center gap-2 text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-semibold border-b-2 border-teal-500/50 pb-1.5 transition-colors"
           >
-            <span>Explore All 45+ College Festival Archives</span>
+            <span>{t('exploreAllCampuses')}</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>

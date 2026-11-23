@@ -62,11 +62,87 @@ export function DashboardOverview({ onNavigateTab }: DashboardOverviewProps) {
 
         <div className="flex gap-3">
           <button
-            onClick={() => onNavigateTab('enquiries')}
-            className="px-4 py-2 rounded-sm bg-dotpic-gold text-dotpic-black text-xs uppercase tracking-wider font-semibold hover:bg-dotpic-goldLight transition-colors"
+            onClick={() => onNavigateTab('galleries')}
+            className="px-4 py-2 rounded-sm bg-dotpic-gold text-dotpic-black text-xs uppercase tracking-wider font-semibold hover:bg-dotpic-goldLight transition-colors flex items-center gap-1.5"
           >
-            Review New Leads ({newEnquiries})
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>Add / Upload Photos</span>
           </button>
+          <button
+            onClick={() => onNavigateTab('homepage')}
+            className="px-4 py-2 rounded-sm border border-dotpic-gold/50 text-dotpic-gold text-xs uppercase tracking-wider font-semibold hover:bg-dotpic-gold/10 transition-colors"
+          >
+            Update Website
+          </button>
+        </div>
+      </div>
+
+      {/* Quick Launchpad Strip for Owner Actions */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div
+          onClick={() => onNavigateTab('galleries')}
+          className="p-4 rounded-sm bg-gradient-to-br from-dotpic-charcoal to-black border border-dotpic-gold/40 hover:border-dotpic-gold p-5 cursor-pointer transition-all group shadow-lg"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 rounded-full bg-dotpic-gold/20 flex items-center justify-center text-dotpic-gold">
+              <ImageIcon className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm font-serif text-white font-medium group-hover:text-dotpic-gold transition-colors">
+                Photo Upload & Albums
+              </h3>
+              <span className="text-[10px] text-dotpic-muted font-mono uppercase">
+                {photos.length} Photos in {galleries.length} Galleries
+              </span>
+            </div>
+          </div>
+          <p className="text-xs text-dotpic-muted leading-relaxed">
+            Click here to upload photos directly from your device, create albums, and arrange portfolio frames.
+          </p>
+        </div>
+
+        <div
+          onClick={() => onNavigateTab('homepage')}
+          className="p-4 rounded-sm bg-gradient-to-br from-dotpic-charcoal to-black border border-teal-500/30 hover:border-teal-400 p-5 cursor-pointer transition-all group shadow-lg"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400">
+              <TrendingUp className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm font-serif text-white font-medium group-hover:text-teal-300 transition-colors">
+                Website Content & Hero
+              </h3>
+              <span className="text-[10px] text-teal-400/80 font-mono uppercase">
+                Live Studio Frontpage
+              </span>
+            </div>
+          </div>
+          <p className="text-xs text-dotpic-muted leading-relaxed">
+            Update masked headlines, change hero billboard photo/video, edit stats counters, and toggle sections.
+          </p>
+        </div>
+
+        <div
+          onClick={() => onNavigateTab('settings')}
+          className="p-4 rounded-sm bg-gradient-to-br from-dotpic-charcoal to-black border border-slate-700 hover:border-slate-500 p-5 cursor-pointer transition-all group shadow-lg"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300">
+              <Clock className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm font-serif text-white font-medium group-hover:text-white transition-colors">
+                Studio Settings & Socials
+              </h3>
+              <span className="text-[10px] text-slate-400 font-mono uppercase">
+                WhatsApp, Instagram, Backup
+              </span>
+            </div>
+          </div>
+          <p className="text-xs text-dotpic-muted leading-relaxed">
+            Change WhatsApp number (+91 6281392682), Instagram handle, studio address, announcement bar, or export JSON backup.
+          </p>
         </div>
       </div>
 

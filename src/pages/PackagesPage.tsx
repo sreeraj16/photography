@@ -62,40 +62,40 @@ export function PackagesPage() {
               key={pkg.id}
               maxTilt={5}
               scale={1.02}
-              className={`relative rounded-2xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl transition-all duration-300 ${
+              className={`relative rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-md dark:shadow-2xl transition-all duration-300 ${
                 pkg.is_popular
-                  ? 'bg-gradient-to-b from-dotpic-charcoal via-black to-dotpic-charcoal border-2 border-dotpic-gold shadow-[0_0_40px_rgba(201,169,110,0.25)]'
-                  : 'bg-dotpic-charcoal border border-dotpic-border/80 hover:border-dotpic-gold/50'
+                  ? 'bg-white dark:bg-slate-900 border-2 border-teal-500 shadow-[0_10px_35px_rgba(20,184,166,0.2)]'
+                  : 'bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 hover:border-teal-500/50'
               }`}
             >
               {pkg.is_popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-dotpic-gold via-[#E8D1A7] to-dotpic-gold text-dotpic-black text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-teal-600 text-white text-[10px] font-orbitron font-bold tracking-[0.15em] uppercase px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>SIGNATURE MOST POPULAR</span>
                 </div>
               )}
 
               <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-dotpic-gold block mb-2 font-bold">
+                <span className="text-[10px] uppercase font-orbitron tracking-widest text-teal-600 dark:text-teal-400 block mb-2 font-bold">
                   {pkg.duration}
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">{pkg.name}</h3>
-                <p className="text-xs text-dotpic-muted leading-relaxed mb-6 font-light">{pkg.description}</p>
+                <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 dark:text-white mb-2">{pkg.name}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-sans">{pkg.description}</p>
 
-                <div className="mb-6 pb-6 border-b border-dotpic-border/80">
-                  <span className="text-3xl sm:text-4xl font-serif text-dotpic-gold font-medium">
+                <div className="mb-6 pb-6 border-b border-[#E8E2D6] dark:border-slate-800">
+                  <span className="text-3xl sm:text-4xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">
                     {formatINR(pkg.price_inr)}
                   </span>
-                  <span className="text-xs text-dotpic-muted ml-2 font-mono">/ complete assignment</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2 font-sans">/ complete assignment</span>
                 </div>
 
-                <ul className="space-y-3.5 mb-8 text-xs text-dotpic-muted">
+                <ul className="space-y-3.5 mb-8 text-xs text-slate-700 dark:text-slate-300 font-sans">
                   {pkg.inclusions.map((inc, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className="w-4 h-4 rounded-full bg-dotpic-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3 h-3 text-dotpic-gold" />
+                      <div className="w-4 h-4 rounded-full bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-teal-600 dark:text-teal-400" />
                       </div>
-                      <span className="font-light">{inc}</span>
+                      <span>{inc}</span>
                     </li>
                   ))}
                 </ul>
@@ -107,7 +107,7 @@ export function PackagesPage() {
                   className="w-full block"
                 >
                   <Button
-                    variant={pkg.is_popular ? 'gold' : 'outline'}
+                    variant={pkg.is_popular ? 'primary' : 'outline'}
                     size="lg"
                     className="w-full"
                     withShutterSound
@@ -124,39 +124,39 @@ export function PackagesPage() {
       {/* Side-by-Side Comparison Matrix */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="text-center mb-6">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-dotpic-gold font-semibold block mb-1">
+          <span className="text-[10px] font-orbitron uppercase tracking-widest text-teal-600 dark:text-teal-400 font-semibold block mb-1">
             DETAILED SPECIFICATIONS
           </span>
-          <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">
+          <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 dark:text-white mb-2">
             Feature Comparison Matrix
           </h3>
-          <p className="text-[11px] text-dotpic-muted font-mono block sm:hidden">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 font-orbitron block sm:hidden">
             ← Swipe horizontally to compare all packages →
           </p>
         </div>
 
-        <div className="bg-dotpic-charcoal border border-dotpic-border rounded-sm overflow-hidden shadow-2xl">
+        <div className="bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 rounded-2xl overflow-hidden shadow-md dark:shadow-2xl">
           <div className="overflow-x-auto touch-scroll">
             <table className="w-full text-left text-xs min-w-[620px]">
-              <thead className="bg-dotpic-surface text-dotpic-gold font-mono uppercase tracking-wider border-b border-dotpic-border">
+              <thead className="bg-[#FAF7F2] dark:bg-slate-950 text-teal-600 dark:text-teal-400 font-orbitron uppercase tracking-wider border-b border-[#E2DCD0] dark:border-slate-800">
                 <tr>
-                  <th className="py-4 px-6 text-white font-serif sticky left-0 bg-dotpic-surface z-10 shadow-[2px_0_8px_rgba(0,0,0,0.5)]">
+                  <th className="py-4 px-6 text-slate-900 dark:text-white font-serif sticky left-0 bg-[#FAF7F2] dark:bg-slate-950 z-10 shadow-sm">
                     Feature / Deliverable
                   </th>
                   <th className="py-4 px-4 text-center">Classic Storyteller</th>
-                  <th className="py-4 px-4 text-center text-dotpic-gold">Cinematic Grandeur</th>
+                  <th className="py-4 px-4 text-center text-teal-600 dark:text-teal-400 font-bold">Cinematic Grandeur</th>
                   <th className="py-4 px-4 text-center">Heritage Royal</th>
                   <th className="py-4 px-4 text-center">Campus Anthem</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-dotpic-border text-dotpic-muted">
+              <tbody className="divide-y divide-[#E8E2D6] dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-sans">
                 {matrixFeatures.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-dotpic-surface/50 transition-colors">
-                    <td className="py-3.5 px-6 font-medium text-white sticky left-0 bg-dotpic-charcoal z-10 shadow-[2px_0_8px_rgba(0,0,0,0.5)]">
+                  <tr key={idx} className="hover:bg-teal-500/5 transition-colors">
+                    <td className="py-3.5 px-6 font-medium text-slate-900 dark:text-white sticky left-0 bg-white dark:bg-slate-900 z-10 shadow-sm">
                       {row.name}
                     </td>
                     <td className="py-3.5 px-4 text-center">{row.classic}</td>
-                    <td className="py-3.5 px-4 text-center font-semibold text-dotpic-gold bg-dotpic-gold/5">
+                    <td className="py-3.5 px-4 text-center font-semibold text-teal-600 dark:text-teal-400 bg-teal-500/5">
                       {row.grandeur}
                     </td>
                     <td className="py-3.5 px-4 text-center">{row.royal}</td>

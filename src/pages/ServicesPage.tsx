@@ -46,26 +46,26 @@ export function ServicesPage() {
               {/* Text & Features (6 cols) */}
               <div className={`lg:col-span-6 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl font-serif text-dotpic-gold">0{idx + 1}</span>
-                  <div className="h-[1px] w-8 bg-dotpic-gold/50" />
-                  <span className="text-xs uppercase font-mono tracking-widest text-dotpic-gold font-semibold">
+                  <span className="text-2xl font-orbitron font-bold text-teal-600 dark:text-teal-400">0{idx + 1}</span>
+                  <div className="h-[2px] w-8 bg-teal-500/50" />
+                  <span className="text-xs uppercase font-orbitron tracking-widest text-teal-600 dark:text-teal-400 font-semibold">
                     {service.tagline}
                   </span>
                 </div>
 
-                <h2 className="text-3xl font-serif text-white font-light">
+                <h2 className="text-3xl font-serif text-slate-900 dark:text-white font-light">
                   {service.name} Photography
                 </h2>
 
-                <p className="text-xs sm:text-sm text-dotpic-muted leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
                   {service.description}
                 </p>
 
                 {/* Features checklist */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                   {service.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-dotpic-white">
-                      <Check className="w-3.5 h-3.5 text-dotpic-gold flex-shrink-0" />
+                    <div key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200 font-sans">
+                      <Check className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -79,7 +79,7 @@ export function ServicesPage() {
                   </Link>
 
                   <Link to={`/book?category=${encodeURIComponent(service.name)}`}>
-                    <Button variant="gold" size="sm" withShutterSound>
+                    <Button variant="primary" size="sm" withShutterSound>
                       Book This Shoot →
                     </Button>
                   </Link>

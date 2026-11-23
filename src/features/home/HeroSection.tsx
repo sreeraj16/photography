@@ -23,10 +23,10 @@ export function HeroSection({
   const { t } = useI18n();
 
   const statsRibbon = [
-    { label: "Royal Weddings", val: "150+", icon: <Sparkles className="w-4 h-4 text-teal-400" /> },
-    { label: "Campus Festivals", val: "45+", icon: <Users className="w-4 h-4 text-teal-300" /> },
-    { label: "Frames Delivered", val: "500K+", icon: <Camera className="w-4 h-4 text-teal-400" /> },
-    { label: "Client Satisfaction", val: "5.0 ★", icon: <Award className="w-4 h-4 text-teal-300" /> },
+    { label: t('statWeddings'), val: "150+", icon: <Sparkles className="w-4 h-4 text-teal-400" /> },
+    { label: t('statFestivals'), val: "45+", icon: <Users className="w-4 h-4 text-teal-300" /> },
+    { label: t('statFrames'), val: "500K+", icon: <Camera className="w-4 h-4 text-teal-400" /> },
+    { label: t('statSatisfaction'), val: "5.0 ★", icon: <Award className="w-4 h-4 text-teal-300" /> },
   ];
 
   return (
@@ -58,7 +58,7 @@ export function HeroSection({
         >
           <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
           <span className="text-[10px] sm:text-xs font-orbitron uppercase tracking-[0.25em] text-teal-300 font-semibold">
-            DOTPIC PHOTOGRAPHY // CINEMATIC STUDIO
+            {t('heroEyebrow')}
           </span>
         </motion.div>
 
@@ -69,9 +69,9 @@ export function HeroSection({
           transition={{ duration: 0.9, delay: 0.3 }}
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white tracking-tight leading-[1.12] mb-6 uppercase"
         >
-          CAPTURING MOMENTS.{' '}
+          {t('heroHeadline1')}{' '}
           <span className="block mt-2 font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-200 to-teal-400 drop-shadow-[0_2px_25px_rgba(20,184,166,0.5)]">
-            CREATING MEMORIES.
+            {t('heroHeadline2')}
           </span>
         </motion.h1>
 
@@ -82,7 +82,7 @@ export function HeroSection({
           transition={{ duration: 0.8, delay: 0.45 }}
           className="text-sm sm:text-base md:text-lg text-slate-300 font-sans font-light tracking-wide max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          {t('tagline') || subheadline}
+          {t('heroTagline') || subheadline}
         </motion.p>
 
         {/* Clean, High-impact Teal Action Buttons */}

@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Camera } from 'lucide-react';
 import { BRAND } from '../../lib/constants';
+import { useI18n } from '../../lib/i18n';
 import { TiltCard } from '../../components/ui/TiltCard';
 
 export function IntroSection() {
+  const { t } = useI18n();
+
   return (
     <section className="py-24 sm:py-32 bg-[#FAF7F2] dark:bg-[#080C0E] relative overflow-hidden transition-colors duration-300">
       {/* Ambient Bokeh */}
@@ -17,24 +20,24 @@ export function IntroSection() {
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">01</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-                PHILOSOPHY & ARTISTRY
+                {t('philosophyTag')}
               </span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 leading-[1.15] font-light">
-              We do not just press the shutter; we capture the{' '}
+              {t('philosophyHeading1')}{' '}
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-teal-500 to-teal-700 dark:from-teal-400 dark:via-teal-200 dark:to-teal-400 font-normal">
-                unspoken poetry
+                {t('philosophyHeading2')}
               </span>{' '}
-              of the moment.
+              {t('philosophyHeading3')}
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
-              Founded on the belief that photography is modern visual cinema, DOTPIC blends documentary authenticity with high-fashion editorial polish. From royal Hyderabad weddings to high-voltage engineering campus festivals with 18,000 students, every frame is treated like a classic cinematic still.
+              {t('philosophyDesc1')}
             </p>
 
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-sans leading-relaxed">
-              We reject rigid, artificial poses. Our focus is natural light, human vulnerability, kinetic joy, and deep emotional resonance.
+              {t('philosophyDesc2')}
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-6">
@@ -42,7 +45,7 @@ export function IntroSection() {
                 to="/about"
                 className="inline-flex items-center gap-2 text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 font-semibold group transition-colors"
               >
-                <span>Read The DOTPIC Story</span>
+                <span>{t('readStory')}</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
 
@@ -52,7 +55,7 @@ export function IntroSection() {
                 rel="noopener noreferrer"
                 className="text-xs uppercase font-orbitron tracking-[0.15em] text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
               >
-                Frames on Instagram @_dotpic_ →
+                {t('instaFrames')}
               </a>
             </div>
           </div>

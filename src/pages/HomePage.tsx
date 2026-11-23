@@ -4,7 +4,6 @@ import { IntroSection } from '../features/home/IntroSection';
 import { ServicesGrid } from '../features/home/ServicesGrid';
 import { PortfolioPreview } from '../features/home/PortfolioPreview';
 import { CampusStoriesPreview } from '../features/home/CampusStoriesPreview';
-import { VisualStorytelling } from '../features/home/VisualStorytelling';
 import { HorizontalScroll } from '../features/home/HorizontalScroll';
 import { BeforeAfterSection } from '../features/home/BeforeAfterSection';
 import { WhyChooseUs } from '../features/home/WhyChooseUs';
@@ -34,10 +33,9 @@ export function HomePage() {
         {visibility.services !== false && <ServicesGrid />}
         {visibility.portfolio !== false && <PortfolioPreview />}
         {visibility.campus !== false && <CampusStoriesPreview />}
-        {visibility.horizontal !== false && <VisualStorytelling />}
         {visibility.horizontal !== false && <HorizontalScroll />}
-        {visibility.beforeAfter !== false && <BeforeAfterSection />}
         {visibility.whyChoose !== false && <WhyChooseUs />}
+        {visibility.beforeAfter !== false && <BeforeAfterSection />}
         {visibility.bts !== false && <BTSReels />}
         {visibility.testimonials !== false && <TestimonialsSection />}
         {visibility.packages !== false && <PackagesPreview />}

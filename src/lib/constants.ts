@@ -46,7 +46,7 @@ export const SERVICE_CATEGORIES = [
     slug: "wedding",
     tagline: "Royal rituals and timeless vows",
     description: "Multi-day ceremonial coverage, grand entries, heartfelt pheras, and regal receptions documented with cinematic poise.",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200&auto=format&fit=crop",
     features: ["Candid & Traditional Coverage", "Cinematic 4K Highlights Film", "Deluxe Handcrafted Leather Album", "Drone & Aerial Perspectives"]
   },
   {
@@ -55,7 +55,7 @@ export const SERVICE_CATEGORIES = [
     slug: "pre-wedding",
     tagline: "Romantic conceptual storytelling",
     description: "Scenic destination journeys, natural chemistry, and editorial aesthetics designed around your unique couple story.",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop",
     features: ["Scenic Destination Shoots", "Styling & Moodboard Guidance", "Save-the-Date Teaser Video", "Multiple Signature Looks"]
   },
   {
@@ -73,7 +73,7 @@ export const SERVICE_CATEGORIES = [
     slug: "portrait",
     tagline: "Expressive editorial character",
     description: "Mastery of light and shadows, capturing raw soul, personal branding, and high-fashion modeling portfolios.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
     features: ["Studio & Outdoor Creative Lighting", "High-End Beauty Retouching", "Model & Actor Portfolios", "Corporate Executive Headshots"]
   },
   {
@@ -100,7 +100,7 @@ export const SERVICE_CATEGORIES = [
     slug: "commercial",
     tagline: "Architectural & lifestyle brand identity",
     description: "Visual assets that elevate brand equity, luxury spaces, interior design, and corporate advertising.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
     features: ["Commercial Licensing", "Architectural & Interior Staging", "Advertising Asset Creation", "Billboard-Ready Resolution"]
   },
   {

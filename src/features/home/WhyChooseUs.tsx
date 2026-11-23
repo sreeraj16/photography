@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Camera, Film, Award, Clock, HeartHandshake, ShieldCheck } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 
 export function WhyChooseUs() {
+  const { t } = useI18n();
   const content = dataStore.getHomepageContent();
   const [counts, setCounts] = useState({
     events: 0,
@@ -75,14 +77,14 @@ export function WhyChooseUs() {
             <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">06</span>
             <div className="h-[2px] w-12 bg-teal-500/50" />
             <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-              THE BENCHMARK
+              {t('benchmarkTag')}
             </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-            Why Choose DOTPIC
+            {t('benchmarkHeading')}
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-sans mt-3 leading-relaxed">
-            Our numbers reflect trust earned across five years of documenting memorable weddings, summits, and youth fests.
+            {t('benchmarkDesc')}
           </p>
         </div>
 
@@ -93,7 +95,7 @@ export function WhyChooseUs() {
               {counts.events}+
             </span>
             <span className="text-xs uppercase font-orbitron tracking-wider text-slate-800 dark:text-slate-200 font-semibold block">
-              Events Shot
+              {t('eventsShot')}
             </span>
             <span className="text-[11px] text-slate-500 dark:text-slate-400 block mt-1">Weddings & Major Summits</span>
           </div>
@@ -103,7 +105,7 @@ export function WhyChooseUs() {
               {counts.photos}K+
             </span>
             <span className="text-xs uppercase font-orbitron tracking-wider text-slate-800 dark:text-slate-200 font-semibold block">
-              Frames Delivered
+              {t('framesDelivered')}
             </span>
             <span className="text-[11px] text-slate-500 dark:text-slate-400 block mt-1">Hand-Retouched Art Pieces</span>
           </div>
@@ -113,7 +115,7 @@ export function WhyChooseUs() {
               {counts.colleges}+
             </span>
             <span className="text-xs uppercase font-orbitron tracking-wider text-slate-800 dark:text-slate-200 font-semibold block">
-              Colleges Covered
+              {t('collegesCovered')}
             </span>
             <span className="text-[11px] text-slate-500 dark:text-slate-400 block mt-1">IITs, BITS & Premier Institutes</span>
           </div>
@@ -123,7 +125,7 @@ export function WhyChooseUs() {
               {counts.years}+
             </span>
             <span className="text-xs uppercase font-orbitron tracking-wider text-slate-800 dark:text-slate-200 font-semibold block">
-              Years Experience
+              {t('yearsExperience')}
             </span>
             <span className="text-[11px] text-slate-500 dark:text-slate-400 block mt-1">Artisan Mastery Since 2020</span>
           </div>

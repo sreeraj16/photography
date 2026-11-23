@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Instagram, Youtube, Menu, X, Volume2, VolumeX, Calendar, Phone, ArrowUpRight, Globe, Sun, Moon } from 'lucide-react';
-import { BRAND, NAV_LINKS } from '../../lib/constants';
+import { Instagram, Youtube, Menu, X, Calendar, Phone, ArrowUpRight, Globe, Sun, Moon, LogIn } from 'lucide-react';
+import { BRAND } from '../../lib/constants';
 import { useI18n } from '../../lib/i18n';
 import { useAudio } from '../../hooks/useAudio';
 import { useTheme } from '../../lib/theme';
@@ -13,9 +13,10 @@ export function Header() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { lang, setLang } = useI18n();
-  const { soundEnabled, toggleSound, playShutterSound } = useAudio();
+  const { lang, setLang, t } = useI18n();
+  const { playShutterSound } = useAudio();
   const { theme, toggleTheme, isDark } = useTheme();
+  const isAdmin = typeof window !== 'undefined' && Boolean(localStorage.getItem('dotpic_admin_auth'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +26,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent background scrolling when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -42,21 +41,31 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
+  const navLinks = [
+    { name: t('navHome'), path: '/' },
+    { name: t('navAbout'), path: '/about' },
+    { name: t('navServices'), path: '/services' },
+    { name: t('navPortfolio'), path: '/portfolio' },
+    { name: t('navCampus'), path: '/campus-stories' },
+    { name: t('navPackages'), path: '/packages' },
+    { name: t('navContact'), path: '/contact' },
+  ];
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
             ? 'bg-[#FAF7F2]/95 dark:bg-[#080C0E]/95 backdrop-blur-md border-b border-[#E2DCD0] dark:border-[#1E293B] py-2.5 sm:py-3 shadow-md'
-            : 'bg-gradient-to-b from-[#FAF7F2]/90 via-[#FAF7F2]/50 to-transparent dark:from-[#080C0E]/90 dark:via-[#080C0E]/50 dark:to-transparent py-3.5 sm:py-4'
+            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-3.5 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* 1. Official Brand Logo */}
             <Link
               to="/"
-              className="flex items-center gap-3 group focus:outline-none"
+              className="flex items-center gap-3 group focus:outline-none flex-shrink-0"
               onClick={playShutterSound}
               aria-label="DOTPIC Photography Home"
               data-cursor="hover"
@@ -64,19 +73,21 @@ export function Header() {
               <DotpicLogo size="md" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
-              {NAV_LINKS.map((link) => {
+            {/* 2. Desktop Navigation Bar (Cleanly centered & evenly spaced) */}
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7">
+              {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
                     data-cursor="hover"
-                    className={`font-orbitron text-[11px] tracking-wider uppercase transition-all duration-200 relative py-1 ${
+                    className={`font-orbitron text-[11px] xl:text-xs tracking-wider uppercase transition-all duration-200 relative py-1 ${
                       isActive
                         ? 'text-teal-600 dark:text-teal-400 font-semibold'
-                        : 'text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400'
+                        : isScrolled
+                        ? 'text-slate-700 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 font-medium'
+                        : 'text-white/90 hover:text-teal-300 font-medium'
                     }`}
                   >
                     {link.name}
@@ -88,13 +99,32 @@ export function Header() {
               })}
             </nav>
 
-            {/* Right Controls: Dark/Light Mode, Socials, Sound, Lang, Book CTA */}
-            <div className="hidden lg:flex items-center gap-2.5 sm:gap-3">
+            {/* 3. Right Utility Cluster: Language, Theme, Login, Book Slot */}
+            <div className="hidden lg:flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+              {/* Language Switcher (EN / తెలుగు) */}
+              <button
+                onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
+                data-cursor="hover"
+                className={`px-2.5 py-1 text-[11px] font-orbitron font-semibold border rounded-full transition-all flex items-center gap-1 shadow-sm ${
+                  isScrolled
+                    ? 'border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-teal-500 hover:text-teal-600 bg-white/70 dark:bg-slate-900/70'
+                    : 'border-white/20 text-white hover:border-teal-400 hover:text-teal-300 bg-black/40 backdrop-blur-md'
+                }`}
+                title="Switch Language: English / తెలుగు"
+              >
+                <Globe className="w-3.5 h-3.5 text-teal-500" />
+                <span>{lang === 'en' ? 'తెలుగు' : 'EN'}</span>
+              </button>
+
               {/* Theme Toggle (Dark / Light) */}
               <button
                 onClick={toggleTheme}
                 data-cursor="hover"
-                className="p-2 rounded-full border border-slate-300 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500/50 transition-all duration-300 shadow-sm"
+                className={`p-2 rounded-full border transition-all duration-300 shadow-sm ${
+                  isScrolled
+                    ? 'border-slate-300 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500/50'
+                    : 'border-white/20 bg-black/40 backdrop-blur-md text-white hover:text-teal-300 hover:border-teal-400'
+                }`}
                 title={isDark ? "Switch to Cream Light Mode" : "Switch to Noir Dark Mode"}
                 aria-label="Toggle theme mode"
               >
@@ -105,53 +135,22 @@ export function Header() {
                 )}
               </button>
 
-              {/* Sound Toggle */}
-              <button
-                onClick={toggleSound}
+              {/* Login / Admin Studio Button at the Top */}
+              <Link
+                to={isAdmin ? "/admin" : "/admin/login"}
                 data-cursor="hover"
-                className="p-2 rounded-full border border-slate-300 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors shadow-sm focus:outline-none"
-                title={soundEnabled ? "Mute shutter sound" : "Enable camera shutter sound"}
-                aria-label="Toggle camera shutter sound effects"
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-orbitron font-semibold uppercase tracking-wider rounded-full border transition-all shadow-sm ${
+                  isScrolled
+                    ? 'border-slate-300 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 text-slate-800 dark:text-slate-200 hover:border-teal-500 hover:text-teal-600'
+                    : 'border-white/20 bg-black/40 backdrop-blur-md text-white hover:border-teal-400 hover:text-teal-300'
+                }`}
+                title={isAdmin ? "Open Admin Studio Dashboard" : "Admin & Studio Portal Login"}
               >
-                {soundEnabled ? <Volume2 className="w-4 h-4 text-teal-600 dark:text-teal-400" /> : <VolumeX className="w-4 h-4" />}
-              </button>
+                <LogIn className="w-3.5 h-3.5 text-teal-500" />
+                <span>{isAdmin ? "Admin Studio" : t('navLogin')}</span>
+              </Link>
 
-              {/* Official Social Icons */}
-              <div className="flex items-center gap-1 px-1.5 border-l border-r border-slate-300 dark:border-slate-800">
-                <a
-                  href={BRAND.socials.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={BRAND.socials.instagram.label}
-                  data-cursor="hover"
-                  className="p-1.5 text-slate-500 hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a
-                  href={BRAND.socials.youtube.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={BRAND.socials.youtube.label}
-                  data-cursor="hover"
-                  className="p-1.5 text-slate-500 hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-              </div>
-
-              {/* Language Selector */}
-              <button
-                onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
-                data-cursor="hover"
-                className="px-2.5 py-1 text-[11px] font-orbitron font-semibold border border-slate-300 dark:border-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors flex items-center gap-1 bg-white/60 dark:bg-slate-900/60"
-                title="Switch Language: English / Telugu"
-              >
-                <Globe className="w-3 h-3 text-teal-600 dark:text-teal-400" />
-                <span>{lang === 'en' ? 'తెలుగు' : 'EN'}</span>
-              </button>
-
-              {/* Book Slot CTA */}
+              {/* Direct Book Slot Action */}
               <Link to="/book" data-cursor="hover">
                 <Button
                   size="sm"
@@ -159,43 +158,44 @@ export function Header() {
                   withShutterSound
                   icon={<Calendar className="w-3.5 h-3.5 text-white" />}
                 >
-                  Book Slot
+                  {t('navBookSlot')}
                 </Button>
               </Link>
             </div>
 
-            {/* Mobile Actions */}
+            {/* Mobile Actions: Language, Theme, Login, Hamburger */}
             <div className="flex items-center gap-2 lg:hidden">
-              {/* Mobile Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="p-1.5 rounded-full border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300"
-                aria-label="Toggle Theme"
-              >
-                {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-teal-600" />}
-              </button>
-
               <button
                 onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
-                className="px-2 py-1 text-[10px] font-orbitron font-semibold border border-slate-300 dark:border-slate-800 rounded-full text-teal-600 dark:text-teal-400"
+                className="px-2 py-1 text-[10px] font-orbitron font-semibold border border-slate-300 dark:border-slate-800 rounded-full text-teal-600 dark:text-teal-400 bg-white/80 dark:bg-slate-900/80 shadow-sm"
                 aria-label="Switch Language"
               >
                 {lang === 'en' ? 'తెలుగు' : 'EN'}
               </button>
 
-              <a
-                href={BRAND.socials.whatsapp.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 text-teal-600 dark:text-teal-400"
-                aria-label="Direct WhatsApp"
+              <button
+                onClick={toggleTheme}
+                className="p-1.5 rounded-full border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 bg-white/80 dark:bg-slate-900/80 shadow-sm"
+                aria-label="Toggle Theme"
               >
-                <Phone className="w-4 h-4" />
-              </a>
+                {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-teal-600" />}
+              </button>
+
+              <Link
+                to={isAdmin ? "/admin" : "/admin/login"}
+                className="p-1.5 rounded-full border border-slate-300 dark:border-slate-800 text-teal-600 dark:text-teal-400 bg-white/80 dark:bg-slate-900/80 shadow-sm"
+                aria-label="Admin Portal"
+              >
+                <LogIn className="w-4 h-4" />
+              </Link>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 text-slate-800 dark:text-slate-100 hover:text-teal-600 dark:hover:text-teal-400 focus:outline-none"
+                className={`p-2 rounded-lg transition-colors ${
+                  isScrolled
+                    ? 'text-slate-800 dark:text-slate-100 hover:text-teal-600'
+                    : 'text-white hover:text-teal-300'
+                }`}
                 aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -231,7 +231,7 @@ export function Header() {
 
             {/* Scrollable Navigation List */}
             <nav className="flex flex-col gap-4 py-6 mt-4">
-              {NAV_LINKS.map((link, idx) => {
+              {navLinks.map((link, idx) => {
                 const isActive = location.pathname === link.path;
                 return (
                   <motion.div
@@ -266,23 +266,23 @@ export function Header() {
                 className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3"
               >
                 <Link
-                  to="/links"
+                  to="/admin/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs font-orbitron uppercase tracking-widest text-teal-600 dark:text-teal-400 block py-1"
+                  className="text-xs font-orbitron uppercase tracking-widest text-teal-600 dark:text-teal-400 block py-1 font-semibold"
                 >
-                  Link-in-Bio Hub (/links) →
+                  {t('navLogin')} →
                 </Link>
                 <Link
-                  to="/client-gallery"
+                  to="/links"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs font-orbitron uppercase tracking-widest text-slate-500 dark:text-slate-400 block py-1"
+                  className="text-xs font-orbitron uppercase tracking-widest text-slate-600 dark:text-slate-400 block py-1"
                 >
-                  Client Gallery Vault →
+                  Link-in-Bio Hub (/links) →
                 </Link>
               </motion.div>
             </nav>
 
-            {/* Bottom Actions: Theme, Socials, Book CTA */}
+            {/* Bottom Actions */}
             <div className="flex flex-col gap-4 border-t border-slate-200 dark:border-slate-800 pt-4 pb-6 mt-auto">
               <div className="flex items-center justify-between">
                 <button
@@ -317,7 +317,7 @@ export function Header() {
 
               <Link to="/book" onClick={() => setMobileMenuOpen(false)} className="w-full">
                 <Button variant="primary" size="lg" className="w-full" withShutterSound>
-                  Book Your Shoot Now
+                  {t('navBookSlot')}
                 </Button>
               </Link>
             </div>

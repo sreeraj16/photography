@@ -54,15 +54,15 @@ export function AboutPage() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-serif text-white font-light">
+            <h2 className="text-2xl sm:text-3xl font-serif text-slate-900 dark:text-white font-light">
               We started with a single camera and a relentless obsession with truth.
             </h2>
 
-            <p className="text-xs sm:text-sm text-dotpic-muted leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
               DOTPIC was born out of Hyderabad's vibrant cultural landscape. We grew tired of stiff, artificial wedding portraits with plastic skin retouching, and sterile campus event coverage.
             </p>
 
-            <p className="text-xs sm:text-sm text-dotpic-muted leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
               We asked a simple question: what if wedding photography felt like a frame from an international art film? And what if college festivals were captured with the kinetic visual power of a stadium rock documentary?
             </p>
 
@@ -107,13 +107,13 @@ export function AboutPage() {
       </div>
 
       {/* Team Roster Grid */}
-      <div className="bg-dotpic-charcoal py-24 border-t border-b border-dotpic-border">
+      <div className="bg-[#F5F1E8] dark:bg-[#0B1014] py-24 border-t border-b border-[#E4DCD0] dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-dotpic-gold font-semibold block mb-1">
+            <span className="text-[10px] font-orbitron uppercase tracking-widest text-teal-600 dark:text-teal-400 font-semibold block mb-1">
               THE CREATIVE DIRECTORS
             </span>
-            <h2 className="text-3xl font-serif text-white font-light">
+            <h2 className="text-3xl font-serif text-slate-900 dark:text-white font-light">
               Meet The DOTPIC Crew
             </h2>
           </div>
@@ -124,7 +124,7 @@ export function AboutPage() {
                 key={i}
                 maxTilt={6}
                 scale={1.02}
-                className="bg-dotpic-black border border-dotpic-border/80 rounded-2xl overflow-hidden group hover:border-dotpic-gold/60 transition-colors duration-300 shadow-2xl"
+                className="bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 rounded-2xl overflow-hidden group hover:border-teal-500/60 transition-colors duration-300 shadow-md dark:shadow-2xl"
               >
                 <div className="aspect-[4/5] overflow-hidden relative">
                   <img
@@ -144,11 +144,11 @@ export function AboutPage() {
                 </div>
 
                 <div className="p-6">
-                  <span className="text-[10px] uppercase font-mono text-dotpic-gold tracking-widest block mb-1 font-bold">
+                  <span className="text-[10px] uppercase font-orbitron text-teal-600 dark:text-teal-400 tracking-widest block mb-1 font-bold">
                     {member.role}
                   </span>
-                  <h3 className="text-xl font-serif text-white mb-2">{member.name}</h3>
-                  <p className="text-xs text-dotpic-muted leading-relaxed font-light">{member.bio}</p>
+                  <h3 className="text-xl font-serif text-slate-900 dark:text-white mb-2">{member.name}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">{member.bio}</p>
                 </div>
               </TiltCard>
             ))}
@@ -158,11 +158,11 @@ export function AboutPage() {
 
       {/* Bottom CTA */}
       <div className="max-w-4xl mx-auto px-4 text-center py-20">
-        <h3 className="text-2xl sm:text-3xl font-serif text-white mb-4">
+        <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 dark:text-white mb-4">
           Ready to tell your story together?
         </h3>
         <Link to="/book">
-          <Button variant="gold" size="lg" withShutterSound>
+          <Button variant="primary" size="lg" withShutterSound>
             Book Your Shoot With The Team
           </Button>
         </Link>

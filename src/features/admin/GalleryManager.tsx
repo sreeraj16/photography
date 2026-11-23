@@ -43,6 +43,21 @@ export function GalleryManager() {
   const [uploadIso, setUploadIso] = useState('400');
   const [uploadAperture, setUploadAperture] = useState('f/1.4');
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, target: 'photo' | 'cover') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const dataUrl = event.target?.result as string;
+      if (target === 'photo') {
+        setUploadUrl(dataUrl);
+      } else {
+        setNewCover(dataUrl);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   const refreshData = () => {
     setGalleries([...dataStore.getGalleries()]);
     setPhotos([...dataStore.getPhotos()]);
@@ -369,14 +384,35 @@ export function GalleryManager() {
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs text-dotpic-muted block mb-1">Cover Image URL</label>
+              <div className="space-y-2">
+                <label className="text-xs text-dotpic-muted block">Album Cover Image (Pick File or Enter URL)</label>
+                <div className="flex items-center gap-3 p-2.5 border border-dashed border-dotpic-gold/40 rounded-sm bg-black/30">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleFileUpload(e, 'cover')}
+                    className="text-xs text-dotpic-muted file:mr-3 file:py-1 file:px-2.5 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-dotpic-gold file:text-dotpic-black hover:file:bg-dotpic-goldLight cursor-pointer"
+                  />
+                </div>
                 <Input
                   value={newCover}
                   onChange={(e) => setNewCover(e.target.value)}
-                  placeholder="https://..."
+                  placeholder="https://... or choose a file above"
                 />
               </div>
+
+              {newCover && (
+                <div className="relative aspect-video rounded-sm overflow-hidden border border-dotpic-gold/30 bg-black/60">
+                  <img
+                    src={newCover}
+                    alt="Cover Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/80 text-[10px] text-dotpic-gold font-mono">
+                    Album Cover Preview
+                  </span>
+                </div>
+              )}
 
               <div>
                 <label className="text-xs text-dotpic-muted block mb-1">Description</label>
@@ -419,15 +455,42 @@ export function GalleryManager() {
             <h3 className="text-xl font-serif text-white mb-4">Add Photo to Album</h3>
 
             <form onSubmit={handleAddPhoto} className="space-y-4">
+              {/* Direct File Upload or Image URL */}
+              <div className="space-y-2">
+                <label className="text-xs text-dotpic-muted block">Choose Image File from Computer / Phone</label>
+                <div className="flex items-center gap-3 p-3 border border-dashed border-dotpic-gold/40 rounded-sm bg-black/30 hover:border-dotpic-gold transition-colors">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleFileUpload(e, 'photo')}
+                    className="text-xs text-dotpic-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-dotpic-gold file:text-dotpic-black hover:file:bg-dotpic-goldLight cursor-pointer"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="text-xs text-dotpic-muted block mb-1">Image URL *</label>
+                <label className="text-xs text-dotpic-muted block mb-1">Or Paste Image URL *</label>
                 <Input
                   required
                   value={uploadUrl}
                   onChange={(e) => setUploadUrl(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="https://images.unsplash.com/... or data:image/..."
                 />
               </div>
+
+              {/* Live Preview if uploadUrl is set */}
+              {uploadUrl && (
+                <div className="relative aspect-video rounded-sm overflow-hidden border border-dotpic-gold/30 bg-black/60">
+                  <img
+                    src={uploadUrl}
+                    alt="Upload Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/80 text-[10px] text-dotpic-gold font-mono">
+                    Live Photo Preview
+                  </span>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-4">
                 <div>

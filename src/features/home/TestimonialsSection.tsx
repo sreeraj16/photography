@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, MessageSquarePlus, Quote, CheckCircle2 } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 import { ReviewModal } from '../../components/common/ReviewModal';
 import { Button } from '../../components/ui/Button';
 
 export function TestimonialsSection() {
+  const { t } = useI18n();
   const testimonials = dataStore.getTestimonials(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showReviewModal, setShowReviewModal] = useState(false);
@@ -25,17 +27,17 @@ export function TestimonialsSection() {
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16">
           <div className="inline-flex items-center gap-3 mb-3">
-            <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">07</span>
+            <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">09</span>
             <div className="h-[2px] w-12 bg-teal-500/50" />
             <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-              KUDOS & VOICES
+              {t('reviewsTag')}
             </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-            Words of Love
+            {t('reviewsHeading')}
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-sans mt-3 leading-relaxed">
-            Stories shared by our wedding couples, university conveners, and commercial collaborators.
+            {t('reviewsDesc')}
           </p>
         </div>
 
@@ -89,7 +91,7 @@ export function TestimonialsSection() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handlePrev}
-                    className="p-3 rounded-full border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
+                    className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
                     aria-label="Previous testimonial"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -99,7 +101,7 @@ export function TestimonialsSection() {
                   </span>
                   <button
                     onClick={handleNext}
-                    className="p-3 rounded-full border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
+                    className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:border-teal-500 transition-all shadow-sm"
                     aria-label="Next testimonial"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -118,7 +120,7 @@ export function TestimonialsSection() {
             onClick={() => setShowReviewModal(true)}
             icon={<MessageSquarePlus className="w-4 h-4" />}
           >
-            Have You Worked With DOTPIC? Leave a Review
+            {t('leaveReview')}
           </Button>
         </div>
       </div>

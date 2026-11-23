@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Eye, Camera } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { Lightbox } from '../../components/common/Lightbox';
 
 export function HorizontalScroll() {
+  const { t } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
   const photos = dataStore.getPhotos();
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -30,11 +32,11 @@ export function HorizontalScroll() {
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">05</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-                CURATED STREAM
+                {t('streamTag')}
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-              Signature Panoramic Stream
+              {t('streamHeading')}
             </h2>
           </div>
 

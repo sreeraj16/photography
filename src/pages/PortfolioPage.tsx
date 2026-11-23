@@ -83,7 +83,7 @@ export function PortfolioPage() {
               className={`p-2.5 rounded-full border transition-all ${
                 layoutMode === 'masonry'
                   ? 'bg-teal-600 text-white border-teal-600 shadow-md'
-                  : 'bg-dotpic-surface text-dotpic-muted border-dotpic-border hover:text-white'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-800 hover:text-teal-600'
               }`}
               title="Masonry Mode"
             >
@@ -93,8 +93,8 @@ export function PortfolioPage() {
               onClick={() => setLayoutMode('grid')}
               className={`p-2.5 rounded-full border transition-all ${
                 layoutMode === 'grid'
-                  ? 'bg-dotpic-gold text-dotpic-black border-dotpic-gold shadow-md'
-                  : 'bg-dotpic-surface text-dotpic-muted border-dotpic-border hover:text-white'
+                  ? 'bg-teal-600 text-white border-teal-600 shadow-md'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-800 hover:text-teal-600'
               }`}
               title="Uniform Square Grid Mode"
             >
@@ -106,7 +106,7 @@ export function PortfolioPage() {
 
       {/* Featured Albums Showcase with 3D Tilt */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <h3 className="text-2xl font-serif text-white mb-6">
+        <h3 className="text-2xl font-serif text-slate-900 dark:text-white mb-6">
           Curated Photo Albums ({filteredGalleries.length})
         </h3>
 
@@ -116,7 +116,7 @@ export function PortfolioPage() {
               key={gal.id}
               maxTilt={6}
               scale={1.02}
-              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 shadow-2xl transition-colors duration-300 hover:border-dotpic-gold/60 group"
+              className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 shadow-md dark:shadow-2xl transition-colors duration-300 hover:border-teal-500/60 group"
             >
               <Link to={`/portfolio/${gal.slug}`} className="block">
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -126,17 +126,17 @@ export function PortfolioPage() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-[10px] font-mono text-dotpic-gold border border-dotpic-gold/40 uppercase backdrop-blur-md">
+                  <span className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-[10px] font-orbitron text-teal-400 border border-teal-500/40 uppercase backdrop-blur-md">
                     {gal.category_slug}
                   </span>
                 </div>
 
                 <div className="p-6">
-                  <h4 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-1 truncate">
+                  <h4 className="text-xl font-serif text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-1 truncate">
                     {gal.title}
                   </h4>
-                  <p className="text-xs text-dotpic-muted mb-4 font-light">{gal.location}</p>
-                  <span className="text-xs uppercase tracking-wider text-dotpic-gold flex items-center gap-1 font-semibold">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-4 font-sans">{gal.location}</p>
+                  <span className="text-xs uppercase font-orbitron tracking-wider text-teal-600 dark:text-teal-400 flex items-center gap-1 font-semibold">
                     View Full Album <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -148,7 +148,7 @@ export function PortfolioPage() {
 
       {/* Individual Photo Lightbox Feed with 3D Tilt */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-2xl font-serif text-white mb-6">
+        <h3 className="text-2xl font-serif text-slate-900 dark:text-white mb-6">
           Standalone Master Frames ({filteredPhotos.length})
         </h3>
 

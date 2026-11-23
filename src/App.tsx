@@ -127,7 +127,20 @@ function AppShell() {
 }
 
 export function App() {
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLangState] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('dotpic_language');
+      if (saved === 'en' || saved === 'te') return saved;
+    }
+    return 'en';
+  });
+
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('dotpic_language', newLang);
+    }
+  };
 
   // Smooth Lenis Scroll setup
   useEffect(() => {

@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Instagram, Youtube, ArrowUpRight, Play, Film, Volume2 } from 'lucide-react';
 import { BRAND } from '../../lib/constants';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 import { YouTubeModal } from '../../components/common/YouTubeModal';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { Button } from '../../components/ui/Button';
 
 export function SocialShowcase() {
+  const { t } = useI18n();
   const [activeModalVideo, setActiveModalVideo] = useState<{ id: string; title: string } | null>(null);
   const socialPosts = dataStore.getSocialPosts().slice(0, 6);
   const videos = dataStore.getVideos();
@@ -24,15 +26,15 @@ export function SocialShowcase() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">09</span>
+                <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">11</span>
                 <div className="h-[2px] w-12 bg-teal-500/50" />
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-[10px] font-orbitron tracking-wider uppercase">
                   <Youtube className="w-3.5 h-3.5 text-red-600" />
-                  <span>YOUTUBE • @dotpicphotography</span>
+                  <span>{t('cinemaTag')}</span>
                 </div>
               </div>
               <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-                Cinema in Motion
+                {t('cinemaHeading')}
               </h2>
             </div>
 
@@ -42,7 +44,7 @@ export function SocialShowcase() {
               rel="noopener noreferrer"
             >
               <Button variant="primary" size="md" icon={<Youtube className="w-4 h-4 text-white" />}>
-                Subscribe on YouTube
+                {t('subscribeYouTube')}
               </Button>
             </a>
           </div>
@@ -163,7 +165,7 @@ export function SocialShowcase() {
               rel="noopener noreferrer"
             >
               <Button variant="secondary" size="md" icon={<Instagram className="w-4 h-4 text-pink-500" />}>
-                Follow on Instagram
+                {t('followInstagram')}
               </Button>
             </a>
           </div>

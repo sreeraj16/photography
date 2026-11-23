@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Eye, Camera } from 'lucide-react';
 import { dataStore } from '../../lib/dataStore';
+import { useI18n } from '../../lib/i18n';
 import { Lightbox } from '../../components/common/Lightbox';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { Button } from '../../components/ui/Button';
 
 export function PortfolioPreview() {
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
@@ -36,11 +38,11 @@ export function PortfolioPreview() {
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">03</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-                SIGNATURE ARCHIVE
+                {t('portfolioTag')}
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-              Masterpiece Frames
+              {t('portfolioHeading')}
             </h2>
           </div>
 
@@ -54,7 +56,7 @@ export function PortfolioPreview() {
                   : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 border border-slate-300 dark:border-slate-800'
               }`}
             >
-              All Frames
+              {t('allFrames')}
             </button>
             {categories.slice(0, 4).map((c) => (
               <button
@@ -136,7 +138,7 @@ export function PortfolioPreview() {
         <div className="mt-14 text-center">
           <Link to="/portfolio">
             <Button variant="primary" size="lg" icon={<ArrowUpRight className="w-4 h-4" />}>
-              Browse Master Archive & Albums
+              {t('browseArchive')}
             </Button>
           </Link>
         </div>

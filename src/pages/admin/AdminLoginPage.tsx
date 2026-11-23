@@ -129,10 +129,20 @@ export function AdminLoginPage() {
           </div>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-dotpic-border text-center text-xs text-dotpic-muted">
+        <div className="mt-8 pt-6 border-t border-dotpic-border text-center text-xs text-dotpic-muted space-y-2">
           <p className="text-[11px] font-mono text-dotpic-muted/70">
-            Demo Credentials: <span className="text-dotpic-gold">admin@dotpic.com</span> / <span className="text-dotpic-gold">dotpic2026</span>
+            Owner Credentials: <span className="text-teal-400">admin@dotpic.com</span> / <span className="text-teal-400">dotpic2026</span>
           </p>
+          <button
+            type="button"
+            onClick={() => {
+              setEmail('admin@dotpic.com');
+              setPassword('dotpic2026');
+            }}
+            className="text-[11px] font-orbitron text-teal-400 hover:text-teal-300 underline tracking-wider"
+          >
+            Click to Auto-Fill Credentials
+          </button>
         </div>
       </div>
     </div>

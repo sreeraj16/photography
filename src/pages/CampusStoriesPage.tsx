@@ -53,13 +53,13 @@ export function CampusStoriesPage() {
 
       {/* College Filter Pills */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex flex-wrap items-center justify-center gap-2 pb-6 border-b border-dotpic-border">
+        <div className="flex flex-wrap items-center justify-center gap-2 pb-6 border-b border-[#E4DCD0] dark:border-slate-800">
           <button
             onClick={() => setSelectedCollege('all')}
-            className={`px-4 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+            className={`px-4 py-2 rounded-full text-xs font-orbitron uppercase tracking-wider transition-all ${
               selectedCollege === 'all'
-                ? 'bg-dotpic-gold text-dotpic-black font-semibold'
-                : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+                ? 'bg-teal-600 text-white font-semibold shadow-md'
+                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 border border-slate-300 dark:border-slate-800'
             }`}
           >
             All Campus Fests
@@ -68,10 +68,10 @@ export function CampusStoriesPage() {
             <button
               key={c}
               onClick={() => setSelectedCollege(c)}
-              className={`px-4 py-1.5 rounded-sm text-xs uppercase tracking-wider transition-colors ${
+              className={`px-4 py-2 rounded-full text-xs font-orbitron uppercase tracking-wider transition-all ${
                 selectedCollege === c
-                  ? 'bg-dotpic-gold text-dotpic-black font-semibold'
-                  : 'bg-dotpic-surface text-dotpic-muted hover:text-white border border-dotpic-border'
+                  ? 'bg-teal-600 text-white font-semibold shadow-md'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-teal-600 border border-slate-300 dark:border-slate-800'
               }`}
             >
               {c}
@@ -88,7 +88,7 @@ export function CampusStoriesPage() {
               key={event.id}
               maxTilt={6}
               scale={1.02}
-              className="rounded-2xl overflow-hidden bg-dotpic-charcoal border border-dotpic-border/80 flex flex-col justify-between hover:border-dotpic-gold/60 transition-all duration-300 shadow-xl group"
+              className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-[#E2DCD0] dark:border-slate-800 flex flex-col justify-between hover:border-teal-500/60 transition-all duration-300 shadow-md dark:shadow-2xl group"
             >
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -98,13 +98,13 @@ export function CampusStoriesPage() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="absolute top-3 left-3 bg-black/80 text-dotpic-gold border border-dotpic-gold/40 px-3 py-1 rounded-full text-[10px] font-mono uppercase backdrop-blur-md">
+                  <span className="absolute top-3 left-3 bg-black/80 text-teal-300 border border-teal-500/40 px-3 py-1 rounded-full text-[10px] font-orbitron uppercase backdrop-blur-md">
                     {event.college_name}
                   </span>
 
                   <button
                     onClick={() => setActiveQrEvent(event)}
-                    className="absolute top-3 right-3 p-2 rounded-full bg-black/80 text-white hover:text-dotpic-gold border border-white/20 transition-colors"
+                    className="absolute top-3 right-3 p-2 rounded-full bg-black/80 text-white hover:text-teal-300 border border-white/20 transition-colors"
                     title="View & Download Event QR Code"
                   >
                     <QrCode className="w-4 h-4" />
@@ -112,25 +112,25 @@ export function CampusStoriesPage() {
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center justify-between text-[11px] text-dotpic-gold font-mono mb-2">
+                  <div className="flex items-center justify-between text-[11px] text-teal-600 dark:text-teal-400 font-orbitron mb-2">
                     <span>{formatDate(event.event_date)}</span>
                     <span className="font-bold">{event.photo_count}+ Photos</span>
                   </div>
 
-                  <h3 className="text-xl font-serif text-white group-hover:text-dotpic-gold transition-colors mb-2">
+                  <h3 className="text-xl font-serif text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2">
                     {event.title}
                   </h3>
 
-                  <p className="text-xs text-dotpic-muted line-clamp-2 leading-relaxed mb-6 font-light">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-6 font-sans">
                     {event.description}
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 bg-dotpic-surface/60 border-t border-dotpic-border flex items-center justify-between">
+              <div className="p-4 bg-[#FAF7F2] dark:bg-slate-950 border-t border-[#E8E2D6] dark:border-slate-800 flex items-center justify-between">
                 <Link
                   to={`/campus-stories/${event.slug}`}
-                  className="text-xs uppercase tracking-wider text-dotpic-white group-hover:text-dotpic-gold font-semibold flex items-center gap-1"
+                  className="text-xs uppercase font-orbitron tracking-wider text-teal-600 dark:text-teal-400 font-semibold flex items-center gap-1 hover:text-teal-700"
                 >
                   <span>Open Event Photos</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

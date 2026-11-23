@@ -15,7 +15,7 @@ export function PackagesPreview() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">08</span>
+              <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">10</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
                 INVESTMENT & TIERS

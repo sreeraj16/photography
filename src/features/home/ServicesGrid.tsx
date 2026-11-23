@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Disc } from 'lucide-react';
 import { SERVICE_CATEGORIES } from '../../lib/constants';
+import { useI18n } from '../../lib/i18n';
 import { TiltCard } from '../../components/ui/TiltCard';
 
 export function ServicesGrid() {
+  const { t } = useI18n();
+
   return (
     <section className="py-24 sm:py-32 bg-[#F5F1E8] dark:bg-[#0B1014] relative border-t border-b border-[#E4DCD0] dark:border-slate-800/80 overflow-hidden transition-colors duration-300">
       {/* Background Ambient Glow */}
@@ -17,15 +20,15 @@ export function ServicesGrid() {
               <span className="text-2xl sm:text-3xl font-orbitron text-teal-600 dark:text-teal-400 font-bold">02</span>
               <div className="h-[2px] w-12 bg-teal-500/50" />
               <span className="text-xs uppercase font-orbitron tracking-[0.25em] text-teal-600 dark:text-teal-400 font-semibold">
-                CURATED DISCIPLINES
+                {t('disciplinesTag')}
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif text-slate-900 dark:text-slate-100 font-light">
-              Signature Disciplines
+              {t('disciplinesHeading')}
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md font-sans leading-relaxed">
-            Every genre demands distinct creative direction, lighting ratios, and narrative pacing. Explore our dedicated disciplines.
+            {t('disciplinesDesc')}
           </p>
         </div>
 
@@ -104,7 +107,7 @@ export function ServicesGrid() {
             to="/services"
             className="inline-flex items-center gap-2 text-xs uppercase font-orbitron tracking-[0.2em] text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-semibold border-b-2 border-teal-500/50 pb-1.5 transition-colors"
           >
-            <span>View All Specialized Packages & Disciplines</span>
+            <span>{t('viewAllDisciplines')}</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
